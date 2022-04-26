@@ -1,11 +1,18 @@
 import React from 'react';
 import {StyleSheet, View} from "react-native";
 import {Button, Paragraph, TextInput} from "react-native-paper";
+<<<<<<< HEAD
 import {useNavigation} from "@react-navigation/native";
 
 const AuthComponent = () => {
     const {navigate} = useNavigation();
 
+=======
+import {useNavigation} from '@react-navigation/native'
+
+const AuthComponent = ({navigation}) => {
+    const {navigate} = useNavigation()
+>>>>>>> a4a9f50c282f5562ff02c12ce03d699289675385
     return (
         <View style={styles.container}>
            <View style={{flexDirection: 'row', marginVertical: 10, justifyContent: 'center'}}>
@@ -34,8 +41,13 @@ const AuthComponent = () => {
             <Button style={styles.myButton} mode="contained" onPress={() => console.log('Pressed')}>
                 Войти
             </Button>
+<<<<<<< HEAD
             <Paragraph style={styles.myParagraph}  onPress={() => navigate('AuthForgotPass')}>Забыли пароль?</Paragraph>
             <Paragraph style={styles.myParagraph}>Зарегистрироваться</Paragraph>
+=======
+            <Paragraph style={styles.myParagraph}>Забыли пароль?</Paragraph>
+            <Paragraph style={styles.myParagraph} onPress={() => navigate('AuthRegistrationScreen')}>Зарегистрироваться</Paragraph>
+>>>>>>> a4a9f50c282f5562ff02c12ce03d699289675385
         </View>
     );
 };
