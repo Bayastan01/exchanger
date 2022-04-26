@@ -5,8 +5,9 @@ import {
 } from 'react-native';
 import WelcomeScreen from './src/screens/WelcomeScreen'
 import {NavigationContainer} from '@react-navigation/native'
-import {createNativeStackNavigator} from 'react-native-screens/native-stack'
 import HomeScreen from './src/screens/HomeScreen'
+import AuthRegistration from './src/components/AuthRegistration'
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
 
 const App: () => Node = () => {
     const Stack = createNativeStackNavigator();
@@ -17,12 +18,27 @@ const App: () => Node = () => {
             <Stack.Screen
               name="WelcomeScreenHome"
               component={WelcomeScreen}
-              options={{ title: 'Вход в систему'}}
+              options={{
+                title: 'Вход в систему ',
+                headerStyle: {
+                  backgroundColor: '#473b3b',
+                },
+                headerTintColor: '#fff',
+                headerTitleStyle: {
+                  fontSize: 25,
+                  fontWeight: 'bold',
+                },
+              }}
             />
             <Stack.Screen
               name="HomeScreen"
               component={HomeScreen}
               options={{ title: 'Home' }}
+            />
+            <Stack.Screen
+              name="AuthRegistrationScreen"
+              component={AuthRegistration}
+              options={{ title: 'Создания аккаунта Test' }}
             />
           </Stack.Navigator>
       </NavigationContainer>
