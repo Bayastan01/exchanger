@@ -3,20 +3,29 @@ import type {Node} from 'react';
 import {
     StyleSheet,
 } from 'react-native';
-import AuthEmailComponent from "./src/components/AuthEmailComponent";
-
+import WelcomeScreen from './src/screens/WelcomeScreen'
+import {NavigationContainer} from '@react-navigation/native'
+import {createNativeStackNavigator} from 'react-native-screens/native-stack'
+import HomeScreen from './src/screens/HomeScreen'
 
 const App: () => Node = () => {
-    const is_authorized = true;
-    const user_type = 'Email';
+    const Stack = createNativeStackNavigator();
 
     return (
-        <>
-            {is_authorized ? (
-                <AuthEmailComponent/>
-            ): user_type === 'Email'
-            }
-        </>
+      <NavigationContainer>
+          <Stack.Navigator initialRouteName="WelcomeScreen">
+            <Stack.Screen
+              name="WelcomeScreenHome"
+              component={WelcomeScreen}
+              options={{ title: 'Вход в систему' }}
+            />
+            <Stack.Screen
+              name="HomeScreen"
+              component={HomeScreen}
+              options={{ title: 'Home' }}
+            />
+          </Stack.Navigator>
+      </NavigationContainer>
     );
 };
 
