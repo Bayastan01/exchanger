@@ -1,27 +1,27 @@
 import React from 'react';
-import {StyleSheet, Text, View} from "react-native";
+import {StyleSheet, View} from "react-native";
 import {Button, Paragraph, TextInput} from "react-native-paper";
+import {useNavigation} from "@react-navigation/native";
 
 const AuthComponent = () => {
+    const {navigate} = useNavigation();
+
     return (
         <View style={styles.container}>
            <View style={{flexDirection: 'row', marginVertical: 10, justifyContent: 'center'}}>
                <Paragraph  style={styles.myBtnEmail}>
                    Электронная почта
                </Paragraph>
-
                <Paragraph  style={styles.myBtnEmailRight}>
                    Номер телефона
                </Paragraph>
            </View>
-
             <TextInput
                 label="Электронная почта"
                 // value={full_name}
                 // onChangeText={t => setFullName(t)}
                 style={styles.myInput}
             />
-
             <TextInput
                 label="Пароль"
                 // value={phone_number}
@@ -34,7 +34,7 @@ const AuthComponent = () => {
             <Button style={styles.myButton} mode="contained" onPress={() => console.log('Pressed')}>
                 Войти
             </Button>
-            <Paragraph style={styles.myParagraph}>Забыли пароль?</Paragraph>
+            <Paragraph style={styles.myParagraph}  onPress={() => navigate('AuthForgotPass')}>Забыли пароль?</Paragraph>
             <Paragraph style={styles.myParagraph}>Зарегистрироваться</Paragraph>
         </View>
     );
