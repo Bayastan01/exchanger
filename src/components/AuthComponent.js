@@ -1,35 +1,37 @@
 import React from 'react';
 import {StyleSheet, Text, View} from "react-native";
-import {Button, Caption, Paragraph, TextInput} from "react-native-paper";
+import {Button, Paragraph, TextInput} from "react-native-paper";
 
 const AuthComponent = () => {
     return (
         <View style={styles.container}>
             <Text style={styles.myText}>Вход в систему</Text>
 
-           <View style={{flexDirection: 'row'}}>
-               <Button compact={false} mode="default" style={styles.myBtnEmail}>
+           <View style={{flexDirection: 'row', marginVertical: 10, justifyContent: 'center'}}>
+               <Paragraph  style={styles.myBtnEmail}>
                    Электронная почта
-               </Button>
+               </Paragraph>
 
-               <Button mode="default" style={styles.myBtnEmailRight}>
+               <Paragraph  style={styles.myBtnEmailRight}>
                    Номер телефона
-               </Button>
+               </Paragraph>
            </View>
 
             <TextInput
-                label="Полное имя"
+                label="Электронная почта"
                 // value={full_name}
                 // onChangeText={t => setFullName(t)}
                 style={styles.myInput}
             />
 
             <TextInput
-                label="Номер мобильного телефона"
+                label="Пароль"
                 // value={phone_number}
                 // keyboardType={'phone-pad'}
                 // onChangeText={t => setPhoneNumber(t)}
                 style={styles.myInput}
+                secureTextEntry
+                right={<TextInput.Icon name="eye" />}
             />
             <Button style={styles.myButton} mode="contained" onPress={() => console.log('Pressed')}>
                 Войти
@@ -42,10 +44,20 @@ const AuthComponent = () => {
 
 const styles = StyleSheet.create({
     myBtnEmail: {
-        // backgroundColor: '#f8f9fa',
+        marginHorizontal: 10,
+        borderColor: 'grey',
+        borderRadius: 3,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        backgroundColor: '#e7e7e7'
     },
     myBtnEmailRight: {
-
+        marginHorizontal: 10,
+        borderColor: 'grey',
+        borderRadius: 3,
+        paddingHorizontal: 10,
+        paddingVertical: 5,
+        backgroundColor: '#e7e7e7'
     },
     container: {
         flex: 1,
