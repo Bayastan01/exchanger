@@ -5,25 +5,25 @@ import {Button, Paragraph, TextInput} from "react-native-paper";
 const AuthComponent = () => {
     return (
         <View style={styles.container}>
-            <Text style={styles.myText}>Вход в систему</Text>
-
            <View style={{flexDirection: 'row', marginVertical: 10, justifyContent: 'center'}}>
                <Paragraph  style={styles.myBtnEmail}>
                    Электронная почта
                </Paragraph>
-
                <Paragraph  style={styles.myBtnEmailRight}>
+           <View style={{flexDirection: 'row'}}>
+               <Button compact={false} mode="default" style={styles.myBtnEmail}>
+                   Электронная почта
+               </Button>
+               <Button mode="default" style={styles.myBtnEmailRight}>
                    Номер телефона
                </Paragraph>
            </View>
-
             <TextInput
                 label="Электронная почта"
                 // value={full_name}
                 // onChangeText={t => setFullName(t)}
                 style={styles.myInput}
             />
-
             <TextInput
                 label="Пароль"
                 // value={phone_number}
@@ -60,7 +60,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#e7e7e7'
     },
     container: {
-        flex: 1,
+      marginTop: 20,
+      flex: 1,
     },
     myInput: {
         height: 50,
