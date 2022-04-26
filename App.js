@@ -17,7 +17,7 @@ const App: () => Node = () => {
             <Stack.Screen
               name="WelcomeScreenHome"
               component={WelcomeScreen}
-              options={{ title: 'Вход в систему' }}
+              options={{ title: 'Вход в систему'}}
             />
             <Stack.Screen
               name="HomeScreen"
