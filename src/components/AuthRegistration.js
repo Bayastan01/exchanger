@@ -1,25 +1,28 @@
-import React from 'react'
+import React, {useState} from 'react'
 import AuthProps from './AuthProps'
-import {Button} from 'react-native-paper'
 import {StyleSheet} from 'react-native'
 
 function AuthRegistration() {
+  const [type_Input, setType_Input] = useState('Электронная почта')
+  const type_input = async (type) => {
+    await setType_Input(type)
+  }
+  const AddUser = (user) => {
+    console.log(user)
+  }
   return (
     <>
-      <AuthProps email={'Электронная почта'} pass={true}/>
-      <Button style={styles.myButton} mode="contained" onPress={() => console.log('Pressed')}>
-        Войти
-      </Button>
+      <AuthProps
+        title={type_Input}
+        pass={true}
+        btnTitle={'Создать аккаунт'}
+        type_input={type_input}
+        fun={AddUser}
+      />
     </>
   )
 }
 
-const styles = StyleSheet.create({
-  myButton: {
-    marginHorizontal: 20,
-    marginVertical: 30,
-    paddingVertical: 5
-  },
-});
+const styles = StyleSheet.create({});
 
 export default AuthRegistration
