@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View} from "react-native";
-import {TextInput} from "react-native-paper";
+import {Caption, TextInput} from 'react-native-paper'
 
 const AuthEmailComponent = () => {
     return (
@@ -11,7 +11,6 @@ const AuthEmailComponent = () => {
                 // onChangeText={t => setFullName(t)}
                 style={styles.myInput}
             />
-
             <TextInput
                 label="Номер мобильного телефона"
                 // value={phone_number}
@@ -19,6 +18,7 @@ const AuthEmailComponent = () => {
                 // onChangeText={t => setPhoneNumber(t)}
                 style={styles.myInput}
             />
+          <Caption>Hello</Caption>
         </View>
     );
 };
