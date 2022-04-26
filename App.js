@@ -3,7 +3,7 @@ import type {Node} from 'react';
 import {
     StyleSheet,
 } from 'react-native';
-import AuthEmailComponent from "./src/components/AuthEmailComponent";
+import AuthComponent from "./src/components/AuthComponent";
 
 
 const App: () => Node = () => {
@@ -13,7 +13,7 @@ const App: () => Node = () => {
     return (
         <>
             {is_authorized ? (
-                <AuthEmailComponent/>
+                <AuthComponent/>
             ): user_type === 'Email'
             }
         </>
