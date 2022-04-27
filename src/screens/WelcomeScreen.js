@@ -1,6 +1,5 @@
 import React from 'react'
 import AuthComponent from '../components/AuthComponent'
-import {Text, View} from 'react-native'
 
 function WelcomeScreen() {
   const is_authorized = true;

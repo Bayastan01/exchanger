@@ -1,22 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet,View} from 'react-native'
 import AuthProps from "./AuthProps";
-import {Button} from "react-native-paper";
+
 
 const AuthForgotPass = () => {
+    const [type_Input, setType_Input] = useState('Электронная почта')
+    const type_input = async (type) => {
+        await setType_Input(type)
+    }
+    const AddPass = (user) => {
+        console.log(user)
+    }
     return (
         <>
-            <AuthProps pass={false} email={'Электронная почта'}/>
-            <Button style={styles.BtnEmail} mode="contained">Далее</Button>
+            <AuthProps
+                title={type_Input}
+                pass={false}
+                btnTitle={'Далее'}
+                type_input = {type_input}
+                fun={AddPass}
+            />
         </>
     );
 };
 
-const styles = StyleSheet.create({
-    BtnEmail: {
-        marginVertical: 20,
-        marginHorizontal: 20
-    }
-});
+const styles = StyleSheet.create({});
 
 export default AuthForgotPass;

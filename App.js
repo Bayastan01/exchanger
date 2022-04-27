@@ -9,6 +9,7 @@ import AuthForgotPass from "./src/components/AuthForgotPass";
 import HomeScreen from './src/screens/HomeScreen'
 import AuthRegistration from './src/components/AuthRegistration'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import Profile from "./src/pages/Profile";
 
 const App: () => Node = () => {
     const Stack = createNativeStackNavigator();
@@ -19,12 +20,12 @@ const App: () => Node = () => {
                 <Stack.Screen
                     name="WelcomeScreenHome"
                     component={WelcomeScreen}
-                    options={{title: 'Вход в систему'}}
+                    options={{ headerShown: false }}
                 />
                 <Stack.Screen
                     name="HomeScreen"
                     component={HomeScreen}
-                    options={{title: 'Home'}}
+                    options={{headerShown: false,title: 'Home'}}
                 />
                 <Stack.Screen
                     name="AuthForgotPass"

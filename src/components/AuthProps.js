@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {StyleSheet, View} from 'react-native'
-import {Button, Paragraph, TextInput} from 'react-native-paper'
+import {Button, Paragraph, Text, TextInput} from 'react-native-paper'
 import {useNavigation} from '@react-navigation/native'
 
 function AuthProps(props) {
@@ -15,17 +15,26 @@ function AuthProps(props) {
 
   return (
       <View style={styles.container}>
+        {
+          beginnerScreen
+              ? <Text style={{textAlign: 'center', marginVertical: 20, fontSize: 24}}>Вход в систему</Text>
+              : null
+        }
         <View style={{flexDirection: 'row', marginVertical: 10, justifyContent: 'center'}}>
           <Paragraph
             style={[styles.myBtnEmail, {
-              borderColor: props.title === 'Электронная почта' ? 'grey' : 'transparent',
+              backgroundColor: props.title === 'Электронная почта' ? '#4662dd' : 'transparent',
+              color: props.title === 'Электронная почта' ? '#fff' : 'black',
+              borderWidth: props.title === 'Электронная почта' ? 1 : 0
             }]}
             onPress={() => props.type_input('Электронная почта') && setPhone_Email('')}
           >
             Электронная почта
           </Paragraph>
           <Paragraph  style={[styles.myBtnEmailRight, {
-            borderColor: props.title === 'Номер телефона' ? 'grey' : 'transparent',
+            backgroundColor: props.title === 'Номер телефона' ? '#4662dd' : 'transparent',
+            color: props.title === 'Номер телефона' ? '#fff' : 'black',
+            borderWidth: props.title === 'Номер телефона' ? 1 : 0
           }]} onPress={() => props.type_input('Номер телефона') && setPhone_Email('+996')}>
             Номер телефона
           </Paragraph>
@@ -43,7 +52,7 @@ function AuthProps(props) {
             onChangeText={t => setFull_Password(t)}
             style={styles.myInput}
             secureTextEntry={status}
-            right={<TextInput.Icon name="eye" onPress={() => setStatus(s => !s)}/>}
+            right={<TextInput.Icon   name={status ? 'eye-off' : 'eye'} onPress={() => setStatus(s => !s)}/>}
           />
           : null
         }
@@ -52,7 +61,7 @@ function AuthProps(props) {
         </Button>
         {beginnerScreen ?
           <>
-            <Paragraph style={styles.myParagraph}>Забыли пароль?</Paragraph>
+            <Paragraph style={styles.myParagraph} onPress={() => navigate('AuthForgotPass')}>Забыли пароль?</Paragraph>
             <Paragraph style={styles.myParagraph} onPress={() => navigate('AuthRegistrationScreen')}>Зарегистрироваться</Paragraph>
           </>
           : null
@@ -68,13 +77,12 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     paddingHorizontal: 10,
     paddingVertical: 5,
-    backgroundColor: '#e7e7e7',
     borderWidth: 1,
   },
   myButton: {
     marginHorizontal: 20,
     marginVertical: 20,
-    paddingVertical: 5
+    paddingVertical: 5,
   },
   myBtnEmailRight: {
     marginHorizontal: 10,
@@ -83,7 +91,6 @@ const styles = StyleSheet.create({
     borderStyle: 'solid',
     paddingHorizontal: 10,
     paddingVertical: 5,
-    backgroundColor: '#e7e7e7'
   },
   myInput: {
     height: 50,

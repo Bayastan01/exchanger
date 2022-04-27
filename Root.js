@@ -10,7 +10,7 @@ const Root = () => {
     return (
         <NavigationContainer>
             <PaperProvider>
-                <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+                <StatusBar barStyle={isDarkMode ? 'dark-content ' : 'light-content'} />
                 <App />
             </PaperProvider>
         </NavigationContainer>
