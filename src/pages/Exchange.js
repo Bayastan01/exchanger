@@ -4,7 +4,7 @@ import {Text} from "react-native";
 function Exchange() {
     return (
         <Text>
-            Exchange
+          Hello
         </Text>
     );
 }

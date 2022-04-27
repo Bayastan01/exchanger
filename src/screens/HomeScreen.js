@@ -5,8 +5,6 @@ import Balance from "../pages/Balance";
 import Exchange from "../pages/Exchange";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
-// import { AntDesign } from '@expo/vector-icons';
-
 function HomeScreen() {
     const Tab = createBottomTabNavigator()
     return (
@@ -32,8 +30,9 @@ function HomeScreen() {
                 name="exchange"
                 component={Exchange}
                 options={{
-                    headerShown: false, tabBarLabel: 'Обменять', tabBarIcon: () => (
-                        <Ionicons name='stats-chart-outline' size={20}/>
+                    headerShown: false, tabBarLabel: 'Обменять',
+                    tabBarIcon: () => (
+                      <Ionicons name='stats-chart-outline' size={20}/>
                     )
                 }}
             />
@@ -41,7 +40,8 @@ function HomeScreen() {
                 name="profile"
                 component={Profile}
                 options={{
-                    headerShown: false, tabBarLabel: 'Профиль', tabBarIcon: () => (
+                    headerShown: false,
+                    tabBarLabel: 'Профиль', tabBarIcon: () => (
                         <Ionicons name='person-outline' size={20}/>
                     )
                 }}

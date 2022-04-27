@@ -13,6 +13,12 @@ function AuthProps(props) {
 
   const {navigate} = useNavigation()
 
+  const con_text = (props.title === 'Электронная почта' ? phone_email.toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    ) : phone_email.length === 13) && full_password.length > 3 && full_password.length < 10
+
+
   return (
       <View style={styles.container}>
         {
@@ -56,7 +62,12 @@ function AuthProps(props) {
           />
           : null
         }
-        <Button style={styles.myButton} mode="contained" onPress={() => props.fun(data)}>
+        <Button
+          style={styles.myButton}
+          mode="contained"
+          onPress={() => props.fun(data)}
+          disabled={!con_text}
+        >
           {props.btnTitle}
         </Button>
         {beginnerScreen ?
