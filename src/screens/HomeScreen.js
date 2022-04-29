@@ -13,9 +13,9 @@ function HomeScreen() {
         <Tab.Navigator
             initialRouteName="balance"
             screenOptions={{
-                tabBarActiveTintColor: '#4662dd',
+                tabBarActiveTintColor: '#02ABE1',
                 tabBarLabelStyle: {fontSize: 12},
-                tabBarStyle: {backgroundColor: '#fff'},
+                tabBarStyle: {backgroundColor: '#272B34'},
             }}>
             <Tab.Screen
                 name="balance"
@@ -23,8 +23,8 @@ function HomeScreen() {
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Баланс',
-                    tabBarIcon: () => (
-                        <Ionicons name='cash-outline'  size={25}/>
+                    tabBarIcon: (props) => (
+                        <Ionicons {...props} name='cash-outline'  size={25}/>
                     )
                 }}
             />
@@ -34,8 +34,8 @@ function HomeScreen() {
               options={{
                 headerShown: false,
                 tabBarLabel: 'Перевести',
-                tabBarIcon: () => (
-                  <Ionicons name='swap-horizontal-outline' size={25}/>
+                tabBarIcon: (props) => (
+                  <Ionicons {...props}  name='swap-horizontal-outline' size={25}/>
                 )
               }}
             />
@@ -43,10 +43,9 @@ function HomeScreen() {
                 name="exchange"
                 component={Exchange}
                 options={{
-                    headerShown: false,
-                    tabBarLabel: 'Обменять',
-                    tabBarIcon: () => (
-                      <Ionicons name='sync-outline' size={25}/>
+                    headerShown: false, tabBarLabel: 'Обменять',
+                    tabBarIcon: (props) => (
+                      <Ionicons {...props} name='sync-outline' size={25}/>
                     )
                 }}
             />
@@ -65,8 +64,8 @@ function HomeScreen() {
                 component={Profile}
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'Профиль', tabBarIcon: () => (
-                        <Ionicons name='person-outline' size={25}/>
+                    tabBarLabel: 'Профиль', tabBarIcon: (props) => (
+                        <Ionicons {...props} name='person-outline' size={25}/>
                     )
                 }}
             />
