@@ -24,7 +24,7 @@ function HomeScreen() {
                     headerShown: false,
                     tabBarLabel: 'Баланс',
                     tabBarIcon: (props) => (
-                        <Ionicons {...props} name='cash-outline'  size={25}/>
+                        <Ionicons {...props} name='cash-outline'  size={22}/>
                     )
                 }}
             />
@@ -35,7 +35,7 @@ function HomeScreen() {
                 headerShown: false,
                 tabBarLabel: 'Перевести',
                 tabBarIcon: (props) => (
-                  <Ionicons {...props}  name='swap-horizontal-outline' size={25}/>
+                  <Ionicons {...props}  name='swap-horizontal-outline' size={22}/>
                 )
               }}
             />
@@ -45,7 +45,7 @@ function HomeScreen() {
                 options={{
                     headerShown: false, tabBarLabel: 'Обменять',
                     tabBarIcon: (props) => (
-                      <Ionicons {...props} name='sync-outline' size={25}/>
+                      <Ionicons {...props} name='sync-outline' size={22}/>
                     )
                 }}
             />
@@ -55,7 +55,7 @@ function HomeScreen() {
               options={{
                 headerShown: false,
                 tabBarLabel: 'История', tabBarIcon: (props) => (
-                  <Ionicons {...props} name='timer-outline' size={25}/>
+                  <Ionicons {...props} name='timer-outline' size={22}/>
                 )
               }}
             />
@@ -65,7 +65,7 @@ function HomeScreen() {
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Профиль', tabBarIcon: (props) => (
-                        <Ionicons {...props} name='person-outline' size={25}/>
+                        <Ionicons {...props} name='person-outline' size={22}/>
                     )
                 }}
             />

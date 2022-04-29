@@ -1,6 +1,5 @@
 import React from 'react'
 import AuthComponent from '../components/AuthComponent'
-import HomeScreen from "./HomeScreen";
 
 function WelcomeScreen() {
   const is_authorized = true;
@@ -8,7 +7,7 @@ function WelcomeScreen() {
   return (
     <>
       {is_authorized ? (
-                <HomeScreen/>
+                <AuthComponent/>
             ): user_type === 'Email'
       }
     </>

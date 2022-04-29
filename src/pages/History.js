@@ -27,7 +27,7 @@ function History() {
   ];
 
   return (
-    <View>
+    <View style={{backgroundColor: '#272B34', height: '100%'}}>
       <Caption style={{
         ...styles.title,
         marginVertical: 20,
@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     marginVertical: 1
   },
   title: {
+    color: '#fff',
     marginHorizontal: 4,
     fontSize: 16,
   },
