@@ -55,7 +55,7 @@ function HomeScreen() {
               options={{
                 headerShown: false,
                 tabBarLabel: 'История', tabBarIcon: () => (
-                  <Ionicons name='timer-outline' size={25}/>
+                  <Ionicons {...props} name='timer-outline' size={25}/>
                 )
               }}
             />
