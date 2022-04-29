@@ -111,7 +111,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    marginTop: 20
+    marginTop: 20,
+    height: '100%'
   },
   myText: {
     marginHorizontal: 20,

@@ -12,9 +12,9 @@ function Exchange() {
   }
 
   return (
-    <KeyboardAvoidingView>
+    <KeyboardAvoidingView style={{backgroundColor: '#272B34', height: '100%'}}>
         <ScrollView style={styles.scrollView}>
-          <Text style={{textAlign: 'center', marginVertical: 20, fontSize: 24, fontWeight: '500', color: 'black'}}>Обменять</Text>
+          <Text style={{textAlign: 'center', marginVertical: 20, fontSize: 24, fontWeight: '500', color: '#fff'}}>Обменять</Text>
           <View style={{flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center'}}>
             <View style={{flexGrow: 12}}>
               <Paragraph style={styles.myParagraph}>Отдаю</Paragraph>
@@ -29,7 +29,7 @@ function Exchange() {
               <Paragraph style={styles.myParagraph}>Баланс    $4.02</Paragraph>
             </View>
             <View style={{flexGrow: 1,marginTop: 45}}>
-              <Avatar.Image size={70} source={{uri:'https://img2.freepng.ru/20180330/xgw/kisspng-computer-icons-intern-dollar-5abe0275a67479.4378635315224019096818.jpg'}} />
+              <Avatar.Image size={70} source={{uri:'https://www.logolynx.com/images/logolynx/40/4058bbdfdec989db5cf34147d4c5dad2.jpeg'}} />
             </View>
           </View>
           <Paragraph style={styles.myParagraph}>Курс    81 </Paragraph>
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   myParagraph: {
+    color: '#fff',
     fontSize: 16,
     fontWeightL: '500',
     marginHorizontal: 20,
