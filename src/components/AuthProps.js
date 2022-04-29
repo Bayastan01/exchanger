@@ -4,8 +4,8 @@ import {Button, Paragraph, Text, TextInput} from 'react-native-paper'
 import {useNavigation} from '@react-navigation/native'
 
 function AuthProps(props) {
-  const [phone_email, setPhone_Email] = useState('')
-  const [full_password, setFull_Password] = useState('')
+  const [phone_email, setPhone_Email] = useState('kyrgyzstan@gmail.com')
+  const [full_password, setFull_Password] = useState('12345')
   const [password, setPassword] = useState(props.pass)
   const [beginnerScreen, setBeginnerScreen] = useState(props.beginnerScreen)
   const [status, setStatus] = useState(true)
@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     borderRadius: 3,
     borderStyle: 'solid',
     paddingHorizontal: 10,
+    borderColor: 'blue',
     paddingVertical: 5,
     borderWidth: 1,
   },
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
   myBtnEmailRight: {
     marginHorizontal: 10,
     borderRadius: 3,
-    borderWidth: 1,
+    borderColor: 'blue',
     borderStyle: 'solid',
     paddingHorizontal: 10,
     paddingVertical: 5,
