@@ -4,6 +4,8 @@ import Profile from "../pages/Profile";
 import Balance from "../pages/Balance";
 import Exchange from "../pages/Exchange";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import Transfer from '../pages/Transfer'
+import History from '../pages/History'
 
 function HomeScreen() {
     const Tab = createBottomTabNavigator()
@@ -22,19 +24,41 @@ function HomeScreen() {
                     headerShown: false,
                     tabBarLabel: 'Баланс',
                     tabBarIcon: () => (
-                        <Ionicons name='cash-outline'  size={20}/>
+                        <Ionicons name='cash-outline'  size={25}/>
                     )
                 }}
+            />
+            <Tab.Screen
+              name="transfer_money"
+              component={Transfer}
+              options={{
+                headerShown: false,
+                tabBarLabel: 'Перевести',
+                tabBarIcon: () => (
+                  <Ionicons name='swap-horizontal-outline' size={25}/>
+                )
+              }}
             />
             <Tab.Screen
                 name="exchange"
                 component={Exchange}
                 options={{
-                    headerShown: false, tabBarLabel: 'Обменять',
+                    headerShown: false,
+                    tabBarLabel: 'Обменять',
                     tabBarIcon: () => (
-                      <Ionicons name='stats-chart-outline' size={20}/>
+                      <Ionicons name='sync-outline' size={25}/>
                     )
                 }}
+            />
+            <Tab.Screen
+              name="history"
+              component={History}
+              options={{
+                headerShown: false,
+                tabBarLabel: 'История', tabBarIcon: () => (
+                  <Ionicons name='timer-outline' size={25}/>
+                )
+              }}
             />
             <Tab.Screen
                 name="profile"
@@ -42,7 +66,7 @@ function HomeScreen() {
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Профиль', tabBarIcon: () => (
-                        <Ionicons name='person-outline' size={20}/>
+                        <Ionicons name='person-outline' size={25}/>
                     )
                 }}
             />
