@@ -11,9 +11,9 @@ function HomeScreen() {
         <Tab.Navigator
             initialRouteName="balance"
             screenOptions={{
-                tabBarActiveTintColor: '#4662dd',
+                tabBarActiveTintColor: '#02ABE1',
                 tabBarLabelStyle: {fontSize: 12},
-                tabBarStyle: {backgroundColor: '#fff'},
+                tabBarStyle: {backgroundColor: '#272B34'},
             }}>
             <Tab.Screen
                 name="balance"
@@ -21,8 +21,8 @@ function HomeScreen() {
                 options={{
                     headerShown: false,
                     tabBarLabel: 'Баланс',
-                    tabBarIcon: () => (
-                        <Ionicons name='cash-outline'  size={20}/>
+                    tabBarIcon: (props) => (
+                        <Ionicons {...props} name='cash-outline'  size={20}/>
                     )
                 }}
             />
@@ -31,8 +31,8 @@ function HomeScreen() {
                 component={Exchange}
                 options={{
                     headerShown: false, tabBarLabel: 'Обменять',
-                    tabBarIcon: () => (
-                      <Ionicons name='stats-chart-outline' size={20}/>
+                    tabBarIcon: (props) => (
+                      <Ionicons {...props} name='stats-chart-outline' size={20}/>
                     )
                 }}
             />
@@ -41,8 +41,8 @@ function HomeScreen() {
                 component={Profile}
                 options={{
                     headerShown: false,
-                    tabBarLabel: 'Профиль', tabBarIcon: () => (
-                        <Ionicons name='person-outline' size={20}/>
+                    tabBarLabel: 'Профиль', tabBarIcon: (props) => (
+                        <Ionicons {...props} name='person-outline' size={20}/>
                     )
                 }}
             />
