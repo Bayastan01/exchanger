@@ -62,7 +62,7 @@ function Exchange() {
 
 const styles = StyleSheet.create({
   scrollView: {
-    marginHorizontal: 10,
+    marginHorizontal: 5,
   },
   myButton: {
     marginHorizontal: 20,
