@@ -29,14 +29,14 @@ function Balance() {
                 </View>
                 <View style={styles.bigCorobca}>
                     <Text style={{color: '#fff', textAlign: 'center'}}>Ваш баланс</Text>
-                    <View>
+                    <View style={{marginVertical: 20}}>
                         <Text style={{
                             color: '#fff',
                             fontSize: 30,
                             fontWeight: '500'
                         }}>39,983<Text style={{color: '#fff', fontSize: 15}}>  USD</Text></Text>
                     </View>
-                    <Text style={{color: '#fff', fontSize: 20, marginTop: 5,  fontWeight: '500'}}>3305,45
+                    <Text style={{color: '#fff', fontSize: 20, fontWeight: '500'}}>3305,45
                         <Text style={{color: '#fff', fontSize: 15}}>  KGS</Text></Text>
                 </View>
                 <View>
@@ -44,7 +44,7 @@ function Balance() {
 
                         <View style={styles.DataView}>
                             <Text style={styles.itemDollar}><Text>$</Text>1</Text>
-                            <Text style={styles.itemSom}>84,13 c</Text>
+                            <Text style={styles.itemSom}>84,13 <Text>c</Text></Text>
                         </View>
                         <View>
                             <Image
@@ -102,8 +102,8 @@ const styles = StyleSheet.create({
     itemText: {
         maxWidth: '80%',
         color: '#EDF2F6',
-        fontSize: 13,
-        fontWeight: '700',
+        fontSize: 18,
+        fontWeight: '500',
     },
     itemSmall: {
         color: '#707989',
@@ -118,8 +118,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     valuta: {
-        width: 50,
-        height: 50,
+        width: 60,
+        height: 60,
         borderRadius: 100,
     },
     itemDollar: {
