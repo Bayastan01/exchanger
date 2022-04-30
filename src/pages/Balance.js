@@ -7,8 +7,10 @@ import {
     View,
 } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import {useNavigation} from "@react-navigation/native";
 
 function Balance() {
+    const {navigate} = useNavigation()
     return (
         <>
             <SafeAreaView style={styles.container}>
@@ -25,7 +27,10 @@ function Balance() {
                         <Text style={styles.itemSmall}>№ счета</Text>
                         <Text style={styles.itemText}>1232488929191</Text>
                     </View>
-                    <MaterialCommunityIcons name="bell-badge-outline" size={24} color="#EDF2F6"/>
+                    <MaterialCommunityIcons
+                        name="bell-badge-outline"
+                        size={24} color="#EDF2F6"
+                        onPress={() => navigate('Notifications')}/>
                 </View>
                 <View style={styles.bigCorobca}>
                     <Text style={{color: '#fff', textAlign: 'center'}}>Ваш баланс</Text>
@@ -34,16 +39,15 @@ function Balance() {
                             color: '#fff',
                             fontSize: 30,
                             fontWeight: '500'
-                        }}>39,983<Text style={{color: '#fff', fontSize: 15}}>  USD</Text></Text>
+                        }}>39,983<Text style={{color: '#fff', fontSize: 15}}> USD</Text></Text>
                     </View>
                     <Text style={{color: '#fff', fontSize: 20, fontWeight: '500'}}>3305,45
-                        <Text style={{color: '#fff', fontSize: 15}}>  KGS</Text></Text>
+                        <Text style={{color: '#fff', fontSize: 15}}> KGS</Text></Text>
                 </View>
                 <View>
                     <View style={styles.itemAddValuta}>
-
                         <View style={styles.DataView}>
-                            <Text style={styles.itemDollar}><Text>$</Text>1</Text>
+                            <Text style={styles.itemDollar}><Text>$ </Text>1</Text>
                             <Text style={styles.itemSom}>84,13 <Text>c</Text></Text>
                         </View>
                         <View>
@@ -51,6 +55,21 @@ function Balance() {
                                 style={styles.valuta}
                                 source={{
                                     uri: 'https://www.logolynx.com/images/logolynx/40/4058bbdfdec989db5cf34147d4c5dad2.jpeg',
+                                }}
+                            />
+                        </View>
+                    </View>
+
+                    <View style={styles.itemAddValuta}>
+                        <View style={styles.DataView}>
+                            <Text style={styles.itemDollar}><Text>T </Text>1</Text>
+                            <Text style={styles.itemSom}>82.67<Text>c</Text></Text>
+                        </View>
+                        <View>
+                            <Image
+                                style={styles.valuta}
+                                source={{
+                                    uri: 'https://s2.coinmarketcap.com/static/img/coins/200x200/825.png',
                                 }}
                             />
                         </View>
@@ -87,7 +106,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 10,
     },
     itemAddValuta: {
-        marginVertical: 30,
+        marginVertical: 20,
         padding: 20,
         flexDirection: 'row',
         alignItems: 'center',

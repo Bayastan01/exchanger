@@ -5,12 +5,11 @@ import {NavigationContainer} from '@react-navigation/native';
 import App from './App';
 
 const Root = () => {
-    const isDarkMode = useColorScheme() === 'dark';
 
     return (
         <NavigationContainer>
             <PaperProvider>
-                <StatusBar barStyle={isDarkMode ? 'dark-content ' : 'light-content'} />
+                <StatusBar backgroundColor={'#373F4C'} barStyle={'dark-content'} />
                 <App />
             </PaperProvider>
         </NavigationContainer>

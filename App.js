@@ -10,6 +10,7 @@ import HomeScreen from './src/screens/HomeScreen'
 import AuthRegistration from './src/components/AuthRegistration'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import Profile from "./src/pages/Profile";
+import Notifications from "./src/pages/Notifications";
 
 const App: () => Node = () => {
     const Stack = createNativeStackNavigator();
@@ -36,6 +37,11 @@ const App: () => Node = () => {
                     name="AuthRegistrationScreen"
                     component={AuthRegistration}
                     options={{ title: 'Создания аккаунта Test' }}
+                />
+                <Stack.Screen
+                    name="Notifications"
+                    component={Notifications}
+                    options={{ title: 'Уведомления' }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
