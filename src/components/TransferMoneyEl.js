@@ -8,10 +8,12 @@ function TransferMoneyEl() {
 
   const Send_money = () => {
     console.log(elNumber, elSum)
-    alert(`Ваша завязка отправлена Ваш перевод ${elSum}`)
-    setElNumber(null)
-    setElsum(null)
+    alert(elSum > 999 ?`Ваша завязка отправлена Ваш перевод ${elSum}` : `Ошибка минималный сумма 1000`)
+    setElNumber(0)
+    setElsum(0)
   }
+  const con_text = elNumber.length === 16 && elSum.length  > 3 && elSum.length < 7
+
   return (
     <View style={{backgroundColor: '#272B34', height: '100%'}}>
       <View style={styles.bigCorobca}>
@@ -39,7 +41,7 @@ function TransferMoneyEl() {
         <Button
           style={styles.myButton}
           mode="contained"
-          // disabled={!con_text}
+          disabled={!con_text}
           onPress={() => Send_money()}
         >
           Отправить заявку

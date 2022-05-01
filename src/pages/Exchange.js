@@ -9,6 +9,7 @@ function Exchange() {
   const change_money = () => {
     console.log(money_$ * 81, 'C');
     setMoney_$(0);
+    setMoney_$T(0);
     alert('Ваш баланс менял')
   }
 
@@ -57,7 +58,7 @@ function Exchange() {
             <View style={{flexGrow: 12}}>
               <TextInput
                 placeholderTextColor="black"
-                placeholder={`${(money_$ * 81).toFixed(2) || (money_$T * 82).toFixed(2)} C`}
+                placeholder={`${(money_$ * 81).toFixed(2) && (money_$T * 82).toFixed(2)} C`}
                 keyboardType="numeric"
                 style={styles.myInput}
               />
