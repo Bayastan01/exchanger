@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {StatusBar, useColorScheme} from 'react-native';
 import {Provider as PaperProvider} from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';
@@ -9,7 +9,7 @@ const Root = () => {
     return (
         <NavigationContainer>
             <PaperProvider>
-                <StatusBar backgroundColor={'#373F4C'} barStyle={'dark-content'} />
+                <StatusBar backgroundColor={'#272B34'}/>
                 <App />
             </PaperProvider>
         </NavigationContainer>

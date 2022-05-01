@@ -3,6 +3,7 @@ import {
     Image,
     SafeAreaView,
     StyleSheet,
+    ScrollView,
     Text,
     View,
 } from 'react-native';
@@ -12,7 +13,7 @@ import {useNavigation} from "@react-navigation/native";
 function Balance() {
     const {navigate} = useNavigation()
     return (
-        <>
+        <ScrollView style={{backgroundColor: '#272B34', height: '100%'}}>
             <SafeAreaView style={styles.container}>
                 <View style={styles.itemAdd}>
                     <View>
@@ -34,21 +35,33 @@ function Balance() {
                 </View>
                 <View style={styles.bigCorobca}>
                     <Text style={{color: '#fff', textAlign: 'center'}}>Ваш баланс</Text>
-                    <View style={{marginVertical: 20}}>
+                    <View style={{marginVertical: 5}}>
                         <Text style={{
                             color: '#fff',
                             fontSize: 30,
                             fontWeight: '500'
                         }}>39,983<Text style={{color: '#fff', fontSize: 15}}> USD</Text></Text>
                     </View>
-                    <Text style={{color: '#fff', fontSize: 20, fontWeight: '500'}}>3305,45
-                        <Text style={{color: '#fff', fontSize: 15}}> KGS</Text></Text>
+                    <View style={{marginVertical: 2}}>
+                        <Text style={{
+                            color: '#fff',
+                            fontSize: 30,
+                            fontWeight: '500'
+                        }}>10,45<Text style={{color: '#fff', fontSize: 15}}>USDT</Text></Text>
+                    </View>
+                    <View style={{marginVertical: 2}}>
+                        <Text style={{
+                            color: '#fff',
+                            fontSize: 30,
+                            fontWeight: '500'
+                        }}>3305,45<Text style={{color: '#fff', fontSize: 15}}>KGS</Text></Text>
+                    </View>
                 </View>
                 <View>
                     <View style={styles.itemAddValuta}>
                         <View style={styles.DataView}>
-                            <Text style={styles.itemDollar}><Text>$ </Text>1</Text>
-                            <Text style={styles.itemSom}>84,13 <Text>c</Text></Text>
+                            <Text style={styles.itemDollar}><Text>1 USD </Text></Text>
+                            <Text style={styles.itemSom}>80,13 <Text>c</Text></Text>
                         </View>
                         <View>
                             <Image
@@ -62,7 +75,7 @@ function Balance() {
 
                     <View style={styles.itemAddValuta}>
                         <View style={styles.DataView}>
-                            <Text style={styles.itemDollar}><Text>T </Text>1</Text>
+                            <Text style={styles.itemDollar}><Text>1 USDT </Text></Text>
                             <Text style={styles.itemSom}>82.67<Text>c</Text></Text>
                         </View>
                         <View>
@@ -76,7 +89,7 @@ function Balance() {
                     </View>
                 </View>
             </SafeAreaView>
-        </>
+        </ScrollView>
 
     );
 }
@@ -84,7 +97,6 @@ function Balance() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#272B34'
     },
     square: {
         width: 50,

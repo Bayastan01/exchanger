@@ -7,10 +7,12 @@ function TransferMoneyMb() {
   const [mbSum, setMbsum] = useState(0)
   const Send_money = () => {
     console.log(mbNumber, mbSum)
-    alert(`Ваша завязка отправлена Ваш перевод ${mbSum}`)
-    setMbNumber(null)
-    setMbsum(null)
+    alert(mbSum > 999 ?`Ваша завязка отправлена Ваш перевод ${mbSum}` : `Ошибка минималный сумма 1000`)
+    setMbNumber(0)
+    setMbsum(0)
   }
+  const con_text = mbNumber.length === 10 && mbSum.length  > 3 && mbSum.length < 7
+
   return (
     <View style={{backgroundColor: '#272B34', height: '100%'}}>
       <View style={styles.bigCorobca}>
@@ -38,7 +40,7 @@ function TransferMoneyMb() {
         <Button
           style={styles.myButton}
           mode="contained"
-          // disabled={!con_text}
+          disabled={!con_text}
           onPress={() => Send_money()}
         >
           Отправить заявку
