@@ -28,11 +28,9 @@ function History() {
 
   return (
     <View style={{backgroundColor: '#272B34', height: '100%'}}>
-      <Caption style={{
-        ...styles.title,
-        marginVertical: 20,
-        marginHorizontal: 20
-      }}>28 AПРЕЛЯ</Caption>
+      <Caption style={{...styles.title, marginVertical: 20, marginHorizontal: 20}}>
+        28 AПРЕЛЯ
+      </Caption>
       <FlatList
       data={DATA}
       keyExtractor={item => item.id}

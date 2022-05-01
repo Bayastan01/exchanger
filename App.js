@@ -1,14 +1,13 @@
 import React from 'react';
 import type {Node} from 'react';
-import {
-    StyleSheet,
-} from 'react-native';
+import {StyleSheet,} from 'react-native';
 import WelcomeScreen from './src/screens/WelcomeScreen'
 import {NavigationContainer} from '@react-navigation/native'
 import AuthForgotPass from "./src/components/AuthForgotPass";
 import HomeScreen from './src/screens/HomeScreen'
 import AuthRegistration from './src/components/AuthRegistration'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
+import Transfer from './src/pages/Transfer'
 import Profile from "./src/pages/Profile";
 import Notifications from "./src/pages/Notifications";
 
