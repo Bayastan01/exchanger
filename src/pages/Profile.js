@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
         borderRadius:100,
         backgroundColor:'green',
         marginLeft:100,
-        marginTop:125
+        marginTop:126
     },
     avatar_img:{
         position:'relative'
