@@ -1,17 +1,21 @@
 import React, {useState} from 'react'
 import {Button, Caption, TextInput} from 'react-native-paper'
 import {StyleSheet, Text, View} from 'react-native'
+import {VERIFICATION_CODE_LENGTH} from '../settings/settings'
 
 function TransferMoneyMb() {
   const [mbNumber, setMbNumber] = useState(0)
   const [mbSum, setMbsum] = useState(0)
+  const [verification_code, setVerificationCode] = useState('');
+
   const Send_money = () => {
     console.log(mbNumber, mbSum)
     alert(mbSum > 999 ?`Ваша завязка отправлена Ваш перевод ${mbSum}` : `Ошибка минималный сумма 1000`)
     setMbNumber(0)
     setMbsum(0)
+    setVerificationCode('')
   }
-  const con_text = mbNumber.length === 10 && mbSum.length  > 3 && mbSum.length < 7
+  const con_text = mbNumber.length === 10 && mbSum.length  > 3 && mbSum.length < 7 && verification_code.length === VERIFICATION_CODE_LENGTH
 
   return (
     <View style={{backgroundColor: '#272B34', height: '100%'}}>
@@ -36,6 +40,13 @@ function TransferMoneyMb() {
           style={styles.myInput}
           value={mbSum}
           onChangeText={sum => setMbsum(sum)}
+        />
+        <TextInput
+          label="Код"
+          value={verification_code}
+          keyboardType="numeric"
+          onChangeText={t => setVerificationCode(t)}
+          style={styles.myInput}
         />
         <Button
           style={styles.myButton}
