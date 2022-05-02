@@ -1,18 +1,21 @@
 import React, {useState} from 'react'
 import {Button, Caption, TextInput} from 'react-native-paper'
 import {StyleSheet, Text, View} from 'react-native'
+import {VERIFICATION_CODE_LENGTH} from '../settings/settings'
 
 function TransferMoneyEl() {
   const [elNumber, setElNumber] = useState(0)
   const [elSum, setElsum] = useState(0)
+  const [verification_code, setVerificationCode] = useState('');
 
   const Send_money = () => {
     console.log(elNumber, elSum)
     alert(elSum > 999 ?`Ваша завязка отправлена Ваш перевод ${elSum}` : `Ошибка минималный сумма 1000`)
     setElNumber(0)
     setElsum(0)
+    setVerificationCode('')
   }
-  const con_text = elNumber.length === 16 && elSum.length  > 3 && elSum.length < 7
+  const con_text = elNumber.length === 16 && elSum.length  > 3 && elSum.length < 7 && verification_code.length === VERIFICATION_CODE_LENGTH
 
   return (
     <View style={{backgroundColor: '#272B34', height: '100%'}}>
@@ -37,6 +40,13 @@ function TransferMoneyEl() {
           style={styles.myInput}
           value={elSum}
           onChangeText={sum => setElsum(sum)}
+        />
+        <TextInput
+          label="Код"
+          value={verification_code}
+          keyboardType="numeric"
+          onChangeText={t => setVerificationCode(t)}
+          style={styles.myInput}
         />
         <Button
           style={styles.myButton}

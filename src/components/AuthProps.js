@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {StyleSheet, View} from 'react-native'
 import {Button, Paragraph, Text, TextInput} from 'react-native-paper'
 import {useNavigation} from '@react-navigation/native'
+import {VERIFICATION_CODE_LENGTH} from '../settings/settings'
 
 function AuthProps(props) {
   const [phone_email, setPhone_Email] = useState('kyrgyzstan@gmail.com')
@@ -9,6 +10,7 @@ function AuthProps(props) {
   const [password, setPassword] = useState(props.pass)
   const [beginnerScreen, setBeginnerScreen] = useState(props.beginnerScreen)
   const [status, setStatus] = useState(true)
+  const [verification_code, setVerificationCode] = useState('');
   const data = {user: phone_email, user_password: full_password}
 
   const {navigate} = useNavigation()
@@ -16,7 +18,7 @@ function AuthProps(props) {
   const con_text = (props.title === 'Электронная почта' ? phone_email.toLowerCase()
     .match(
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    ) : phone_email.length === 13) && full_password.length > 3 && full_password.length < 10
+    ) : phone_email.length === 13) && full_password.length > 3 && full_password.length < 10 && verification_code.length === VERIFICATION_CODE_LENGTH
 
 
   return (
@@ -62,6 +64,13 @@ function AuthProps(props) {
           />
           : null
         }
+        <TextInput
+          label="Код"
+          value={verification_code}
+          onChangeText={t => setVerificationCode(t)}
+          style={styles.myInput}
+          keyboardType="numeric"
+        />
         <Button
           style={styles.myButton}
           mode="contained"

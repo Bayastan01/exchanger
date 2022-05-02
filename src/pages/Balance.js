@@ -47,14 +47,14 @@ function Balance() {
                             color: '#fff',
                             fontSize: 30,
                             fontWeight: '500'
-                        }}>10,45<Text style={{color: '#fff', fontSize: 15}}>USDT</Text></Text>
+                        }}>10,45<Text style={{color: '#fff', fontSize: 15}}> USDT</Text></Text>
                     </View>
                     <View style={{marginVertical: 2}}>
                         <Text style={{
                             color: '#fff',
                             fontSize: 30,
                             fontWeight: '500'
-                        }}>3305,45<Text style={{color: '#fff', fontSize: 15}}>KGS</Text></Text>
+                        }}>3305,45<Text style={{color: '#fff', fontSize: 15}}> KGS</Text></Text>
                     </View>
                 </View>
                 <View>
