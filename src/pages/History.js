@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, FlatList, StyleSheet, Text,} from 'react-native';
+import {View, FlatList, StyleSheet, Text, ScrollView} from 'react-native'
 import {Avatar, Caption, Paragraph} from 'react-native-paper'
 
 function History() {
@@ -27,7 +27,7 @@ function History() {
   ];
 
   return (
-    <View style={{backgroundColor: '#272B34', height: '100%'}}>
+    <ScrollView style={{backgroundColor: '#272B34', height: '100%'}}>
       <Caption style={{...styles.title, marginVertical: 20, marginHorizontal: 20}}>
         28 AПРЕЛЯ
       </Caption>
@@ -50,7 +50,7 @@ function History() {
         </>
       )}
       />
-    </View>
+    </ScrollView>
   )
 }
 
