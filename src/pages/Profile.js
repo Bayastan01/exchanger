@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {StyleSheet ,View,Dimensions,Text,ScrollView,SafeAreaView,Alert} from "react-native";
 import {Avatar,Button,TextInput} from 'react-native-paper';
-import Ionicons from "react-native-vector-icons/Ionicons";;
+import Ionicons from "react-native-vector-icons/Ionicons";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Fontisto from "react-native-vector-icons/Fontisto";
 import Entypo from "react-native-vector-icons/Entypo";
@@ -16,13 +16,14 @@ const Profile = () => {
   const [number, setNumber] = useState('');
   const [email_key, setEmail_key] = useState(true);
   const [email, setEmail] = useState('');
+  const [pass, setPass] = useState(true)
 
   const add = () =>
   Alert.alert(
     "Good Bayastan",
     "Озгорду",
     [
-      
+
       {
         text: "Отмена",
         onPress: () => console.log("Cancel Pressed"),
@@ -34,7 +35,6 @@ const Profile = () => {
     return (
         <SafeAreaView style={styles.container}>
         <ScrollView>
-            <View style={styles.haeder} >
                 <View>
                     <View style={styles.avatar}>
                         <View>
@@ -42,55 +42,46 @@ const Profile = () => {
                             style={styles.avatar_img}
                             size={screenSize.width * 0.4}
                             source={{
-                                uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1Amu2GKezbMJO2iv0_loFw-eIHGVkyV8lbQ&usqp=CAU',
+                                uri: 'https://thumbs.dreamstime.com/b/%D0%B7%D0%BE%D0%BB%D0%BE%D1%82%D0%BE-%D1%84%D1%83%D1%82%D1%83%D1%80%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%BF%D1%80%D0%B8%D0%B2%D1%8F%D0%B7%D1%8B%D0%B2%D0%B0%D0%B5%D1%82-%D0%B8%D0%BB%D0%BB%D1%8E%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8E-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0-cryptocurrency-187925201.jpg',
                               }}/>
-                              <View 
-                                style={styles.icon_camera}
-                                >
-                                <Ionicons
-                                name='camera'
-                                color={"white"} 
-                                size={30}
-                                on/>
-                              </View>
                         </View>
-                       
-                        <View style={{alignItems: 'center', marginVertical: 20}}>
+
+                        <View style={{alignItems: 'center'}}>
                             <Text style={styles.text1}>{name}</Text>
                             <Text style={styles.text2}>{number}</Text>
                         </View>
                     </View>
-                 <View style={{margin:20,justifyContent:'space-between'}}>
+                 <View>
                     <View style={styles.textinput}>
                          <Ionicons
                               style={styles.icons1}
                               name='person'
-                              color={"white"} 
+                              color={"white"}
                               size={30}/>
                                      <TextInput
                                     style={styles.input}
                                     mode='outlined'
-                                    activeOutlineColor='yellow'
-                                    outlineColor="red"
+                                    activeOutlineColor='green'
+                                    outlineColor="#3f51b5"
                                     disabled={name_key}
                                     dense={true}
-                                    placeholder="name"
+                                    placeholder="Ф.И.О"
                                     onChangeText={l => setName(l)}
                                     value={name}
                                     />
                               {name_key ? (
-                                         <Ionicons 
+                                         <Ionicons
                                          style={styles.pencil}
-                                         name='pencil' 
-                                         color={'#0aad74'} 
-                                         size={27} 
+                                         name='pencil'
+                                         color={'#3f51b5'}
+                                         size={27}
                                          onPress={() => setName_key(false)}/>
                                     ):(
-                                        <Entypo 
+                                        <Entypo
                                         style={styles.pencil}
-                                        name='check' 
-                                        color={'#0aad74'} 
-                                        size={27} 
+                                        name='check'
+                                        color={'green'}
+                                        size={27}
                                         onPress={() => setName_key(true)}/>
                                     )}
                     </View>
@@ -98,32 +89,32 @@ const Profile = () => {
                     <FontAwesome
                               style={styles.icons2}
                               name='phone'
-                              color={"white"} 
+                              color={"white"}
                               size={30}  />
                                     <TextInput
                                     style={styles.input}
                                     mode='outlined'
                                     activeOutlineColor='green'
-                                    outlineColor="red"
+                                    outlineColor="#3f51b5"
                                     disabled={number_key}
                                     dense={true}
-                                    placeholder="number"
+                                    placeholder="Номер"
                                     value={number}
                                     onChangeText={l => setNumber(l)}
                                     />
                               {number_key ? (
-                                         <Ionicons 
+                                         <Ionicons
                                          style={styles.pencil}
-                                         name='pencil' 
-                                         color={'#0aad74'} 
-                                         size={27} 
+                                         name='pencil'
+                                         color={'#3f51b5'}
+                                         size={27}
                                          onPress={() => setNumber_key(false)}/>
                                     ):(
-                                        <Entypo 
+                                        <Entypo
                                         style={styles.pencil}
-                                        name='check' 
-                                        color={'#0aad74'} 
-                                        size={27} 
+                                        name='check'
+                                        color={'green'}
+                                        size={27}
                                         onPress={() => setNumber_key(true)}/>
                                     )}
                     </View>
@@ -131,32 +122,32 @@ const Profile = () => {
                          <Fontisto
                               style={styles.icons3}
                               name='email'
-                              color={"white"} 
+                              color={"white"}
                               size={27}  />
                                <TextInput
                                     style={styles.input}
                                     mode='outlined'
                                     activeOutlineColor='green'
-                                    outlineColor="red"
+                                    outlineColor="#3f51b5"
                                     disabled={email_key}
                                     dense={true}
-                                    placeholder="email"
+                                    placeholder="Электронная почта"
                                     value={email}
                                     onChangeText={l => setEmail(l)}
                                     />
                              {email_key ? (
-                                         <Ionicons 
+                                         <Ionicons
                                          style={styles.pencil}
-                                         name='pencil' 
-                                         color={'#0aad74'} 
-                                         size={27} 
+                                         name='pencil'
+                                         color={'#3f51b5'}
+                                         size={27}
                                          onPress={() => setEmail_key(false)}/>
                                     ):(
-                                        <Entypo 
+                                        <Entypo
                                         style={styles.pencil}
-                                        name='check' 
-                                        color={'#0aad74'} 
-                                        size={27} 
+                                        name='check'
+                                        color={'green'}
+                                        size={27}
                                         onPress={() => setEmail_key(true)}/>
                                     )}
                     </View>
@@ -164,50 +155,47 @@ const Profile = () => {
                              <FontAwesome
                               style={styles.icons4}
                               name='lock'
-                              color={"white"} 
+                              color={"white"}
                               size={30}  />
                                    <TextInput
                                     style={styles.input}
-                                    secureTextEntry
+                                    secureTextEntry={pass}
                                     mode='outlined'
                                     activeOutlineColor='green'
-                                    outlineColor="red"
+                                    outlineColor="#3f51b5"
                                     disabled={password_key}
                                     dense={true}
-                                    placeholder="password"
+                                    placeholder="Пароль"
                                     value={password}
                                     onChangeText={l => setPassword(l)}
-                                    right={<TextInput.Icon name="eye" />}
+                                    right={<TextInput.Icon onPress={() => setPass(p => !p)} name={pass ? 'eye' : 'eye-off'}/>}
                                     />
                                     {password_key ? (
-                                         <Ionicons 
+                                         <Ionicons
                                          style={styles.pencil}
-                                         name='pencil' 
-                                         color={'#0aad74'} 
-                                         size={27} 
+                                         name='pencil'
+                                         color={'#3f51b5'}
+                                         size={27}
                                          onPress={() => setPassword_key(false)}/>
                                     ):(
-                                        <Entypo 
+                                        <Entypo
                                         style={styles.pencil}
-                                        name='check' 
-                                        color={'#0aad74'} 
-                                        size={27} 
+                                        name='check'
+                                        color={'green'}
+                                        size={27}
                                         onPress={() => setPassword_key(true)}/>
                                     )}
-                            
+
                     </View>
                   </View>
                 </View>
-                <View style={{alignItems:'center'}}>
-                    <Button  
-                    style={styles.button}
-                    onPress={() => save()}
+                    <Button
+                        style={styles.myButton}
+                        mode="contained"
+                        onPress={() => save()}
                     >
-                    Сохранить      
+                        Сохранить
                     </Button>
-                </View>
-                  
-            </View>
          </ScrollView>
         </SafeAreaView>
     );
@@ -215,36 +203,29 @@ const Profile = () => {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: "black",
+      backgroundColor: "#272B34",
     },
-    haeder:{
-        padding: 8,
-        justifyContent:'space-between'
-    },
-    button:{
-        width:300,
-        marginLeft:10,
-        marginTop:60,
-        backgroundColor:'#fff700',
-        color:'black',
+    myButton: {
+        marginHorizontal: 20,
+        marginVertical: 20,
+        paddingVertical: 5,
     },
     pencil:{
         marginTop:20
     },
     input:{
-        width:300,
+        width: '80%',
         marginTop:10,
         marginLeft:25
     },
     textinput:{
-        display:'flex',
         flexDirection:'row',
         justifyContent:'space-between',
-        marginBottom:10
+        marginBottom:10,
+        marginHorizontal: 15,
     },
     avatar:{
-        alignItems: 'center', 
-        marginVertical: 20
+        alignItems: 'center',
     },
     text1:{
         color:'#999999',
@@ -272,19 +253,9 @@ const styles = StyleSheet.create({
         marginTop:20,
         marginLeft:10
     },
-    icon_camera:{
-        position:'absolute',
-        alignItems:'center',
-        justifyContent:'center',
-        width:50,
-        height:50,
-        borderRadius:100,
-        backgroundColor:'green',
-        marginLeft:100,
-        marginTop:126
-    },
     avatar_img:{
-        position:'relative'
+        marginVertical: 20,
+        marginBottom: 0
     }
   });
 export default Profile;
