@@ -12,11 +12,19 @@ function Exchange() {
   const [money_$, setMoney_$] = useState(0)
   const [money_$T, setMoney_$T] = useState(0)
 
-
   const change_money = () => {
-    console.log(money_$ * 81, 'C');
-    setMoney_$(0);
-    setMoney_$T(0);
+    axios.post('http://192.168.21.180:5002/api/v1/exchange', {
+      rate_usd: money_$,
+      rate_usdt: money_$T,
+    }, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    },).then((response) => {
+      console.log(response)
+    }).catch((e) => {
+      console.log(e)
+    })
     alert('Ваш баланс менял')
   }
 
@@ -35,6 +43,9 @@ function Exchange() {
      setWell$T(data.data.payload.rate_usdt)
         console.log(data.data.payload)
       })
+     .catch((e) => {
+       console.log(e)
+     })
   }
 
   const get_money$ = (money_$ * 81).toFixed(2)

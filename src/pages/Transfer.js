@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {StyleSheet} from 'react-native'
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import TransferMoneyEl from '../components/TransferMoneyEl'
 import TransferMoneyMb from '../components/TransferMoneyMb'
+import {GlobalContext} from '../../App'
 
 
 function Transfer() {
