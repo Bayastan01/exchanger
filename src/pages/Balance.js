@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
     Image,
     SafeAreaView,
@@ -9,9 +9,12 @@ import {
 } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {useNavigation} from "@react-navigation/native";
+import {GlobalContext} from "../../App";
 
 function Balance() {
     const {navigate} = useNavigation()
+    const {user} = useContext(GlobalContext)
+
     return (
         <ScrollView style={{backgroundColor: '#272B34', height: '100%'}}>
             <SafeAreaView style={styles.container}>
@@ -40,21 +43,21 @@ function Balance() {
                             color: '#fff',
                             fontSize: 30,
                             fontWeight: '500'
-                        }}>39,983<Text style={{color: '#fff', fontSize: 15}}> USD</Text></Text>
+                        }}>{user.balance_usd}<Text style={{color: '#fff', fontSize: 15}}> USD</Text></Text>
                     </View>
                     <View style={{marginVertical: 2}}>
                         <Text style={{
                             color: '#fff',
                             fontSize: 30,
                             fontWeight: '500'
-                        }}>10,45<Text style={{color: '#fff', fontSize: 15}}> USDT</Text></Text>
+                        }}>{user.balance_usdt}<Text style={{color: '#fff', fontSize: 15}}> USDT</Text></Text>
                     </View>
                     <View style={{marginVertical: 2}}>
                         <Text style={{
                             color: '#fff',
                             fontSize: 30,
                             fontWeight: '500'
-                        }}>3305,45<Text style={{color: '#fff', fontSize: 15}}> KGS</Text></Text>
+                        }}>{user.balance_kgs}<Text style={{color: '#fff', fontSize: 15}}> KGS</Text></Text>
                     </View>
                 </View>
                 <View>
