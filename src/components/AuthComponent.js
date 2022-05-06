@@ -21,9 +21,10 @@ const AuthComponent = (props) => {
             [data.type === 'email' ? 'phone_number' : 'email']: null,
             password: data.user_password
         }).then((response) => {
-            navigate('HomeScreen')
             console.log(response.data.payload.user.email)
             globalContext.signIn(response.data.payload)
+            setLoading(false)
+            navigate('HomeScreen')
         }).catch(e => {
             if (e?.response?.data?.status === 'user_not_found') {
                 Alert.alert('Ошибка!', 'Пользователь не найден!')

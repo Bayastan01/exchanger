@@ -28,7 +28,7 @@ function AuthRegistration() {
                 Alert.alert('Ошибка', 'Такой пользователь уже существует!')
             }
         }).finally(() => {
-            // setLoading(false)
+            setLoading(false)
         })
     }
 

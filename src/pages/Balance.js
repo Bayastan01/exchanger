@@ -14,6 +14,7 @@ import {GlobalContext} from "../../App";
 function Balance() {
     const {navigate} = useNavigation()
     const {user} = useContext(GlobalContext)
+    console.log(user)
 
     return (
         <ScrollView style={{backgroundColor: '#272B34', height: '100%'}}>
