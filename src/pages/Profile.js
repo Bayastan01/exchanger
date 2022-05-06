@@ -42,6 +42,7 @@ const Profile = () => {
         setEmail(user.email)
     }, [])
 
+    console.log(user)
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
@@ -57,39 +58,6 @@ const Profile = () => {
                         </View>
                     </View>
                     <View>
-                        <View style={styles.textinput}>
-                            <Ionicons
-                                style={styles.icons1}
-                                name='person'
-                                color={"white"}
-                                size={30}/>
-                            <TextInput
-                                style={styles.input}
-                                mode='outlined'
-                                activeOutlineColor='green'
-                                outlineColor="#3f51b5"
-                                disabled={name_key}
-                                dense={true}
-                                placeholder="Ф.И.О"
-                                onChangeText={l => setName(l)}
-                                value={name}
-                            />
-                            {name_key ? (
-                                <Ionicons
-                                    style={styles.pencil}
-                                    name='pencil'
-                                    color={'#3f51b5'}
-                                    size={27}
-                                    onPress={() => setName_key(false)}/>
-                            ) : (
-                                <Entypo
-                                    style={styles.pencil}
-                                    name='check'
-                                    color={'green'}
-                                    size={27}
-                                    onPress={() => setName_key(true)}/>
-                            )}
-                        </View>
                         <View style={styles.textinput}>
                             <FontAwesome
                                 style={styles.icons2}
@@ -174,7 +142,7 @@ const Profile = () => {
                                 value={password}
                                 onChangeText={l => setPassword(l)}
                                 right={<TextInput.Icon onPress={() => setPass(p => !p)}
-                                                       name={pass ? 'eye' : 'eye-off'}/>}
+                                                       name={pass ? 'eye-off' : 'eye'}/>}
                             />
                             {password_key ? (
                                 <Ionicons
@@ -218,8 +186,8 @@ const styles = StyleSheet.create({
     },
     myButton: {
         marginHorizontal: 20,
-        marginVertical: 5,
-        paddingVertical: 5,
+        marginVertical: 20,
+        paddingVertical: 2,
     },
     pencil: {
         marginTop: 20
@@ -233,6 +201,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginBottom: 10,
+        marginTop: 10,
         marginHorizontal: 15,
     },
     avatar: {
