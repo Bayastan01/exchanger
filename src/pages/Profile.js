@@ -42,6 +42,7 @@ const Profile = () => {
         setEmail(user.email)
     }, [])
 
+    console.log(user)
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView>
@@ -174,7 +175,7 @@ const Profile = () => {
                                 value={password}
                                 onChangeText={l => setPassword(l)}
                                 right={<TextInput.Icon onPress={() => setPass(p => !p)}
-                                                       name={pass ? 'eye' : 'eye-off'}/>}
+                                                       name={pass ? 'eye-off' : 'eye'}/>}
                             />
                             {password_key ? (
                                 <Ionicons
