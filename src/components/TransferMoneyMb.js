@@ -1,16 +1,32 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {Button, Caption, TextInput} from 'react-native-paper'
 import {StyleSheet, Text, View} from 'react-native'
 import {VERIFICATION_CODE_LENGTH} from '../settings/settings'
+import {GlobalContext} from '../../App'
+import axios from 'axios'
 
 function TransferMoneyMb() {
+  const {user} = useContext(GlobalContext)
+  const {token} = useContext(GlobalContext)
   const [mbNumber, setMbNumber] = useState(0)
   const [mbSum, setMbsum] = useState(0)
   const [verification_code, setVerificationCode] = useState('');
 
   const Send_money = () => {
-    console.log(mbNumber, mbSum)
-    alert(mbSum > 999 ?`Ваша завязка отправлена Ваш перевод ${mbSum}` : `Ошибка минималный сумма 1000`)
+    axios.post('http://192.168.21.180:5002/api/v1/exchange', {
+      mbnumber: mbNumber,
+      mbsum: mbSum,
+    }, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    },).then((response) => {
+      console.log(response)
+      alert('Ваша завязка отправлена Ваш перевод')
+    }).catch((e) => {
+      console.log(e)
+      alert('Ошибка')
+    })
     setMbNumber(0)
     setMbsum(0)
     setVerificationCode('')
@@ -21,7 +37,7 @@ function TransferMoneyMb() {
     <View style={{backgroundColor: '#272B34', height: '100%'}}>
       <View style={styles.bigCorobca}>
         <Text style={{color: '#fff', textAlign: 'center'}}>Ваш баланс</Text>
-        <Text style={{color: '#fff', fontSize: 20, fontWeight: '500'}}>3305,45
+        <Text style={{color: '#fff', fontSize: 20, fontWeight: '500'}}>{user.balance_kgs}
           <Text style={{color: '#fff', fontSize: 15}}>  KGS</Text></Text>
       </View>
       <View>

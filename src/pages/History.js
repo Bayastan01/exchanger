@@ -1,9 +1,13 @@
-import React from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {View, FlatList, StyleSheet, Text, ScrollView} from 'react-native'
 import {Avatar, Caption, Paragraph} from 'react-native-paper'
 import moment from 'moment'
+import axios from 'axios'
+import {GlobalContext} from '../../App'
 
 function History() {
+  const {token} = useContext(GlobalContext)
+  const [history_, setHistory_] = useState([])
 
   const DATA = [
     {
@@ -26,6 +30,24 @@ function History() {
       price: 150
     },
   ];
+
+  useEffect(() => {
+    history()
+  }, [])
+
+  const history = () => {
+    axios.get('http://192.168.21.180:5002/api/v1/history', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
+      .then((data) => {
+        console.log(data)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
 
   return (
     <ScrollView style={{backgroundColor: '#272B34', height: '100%'}}>
