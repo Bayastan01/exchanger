@@ -6,8 +6,6 @@ import AuthForgotPass from "./src/components/AuthForgotPass";
 import HomeScreen from './src/screens/HomeScreen'
 import AuthRegistration from './src/components/AuthRegistration'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import Transfer from './src/pages/Transfer'
-import Profile from "./src/pages/Profile";
 import Notifications from "./src/pages/Notifications"
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ActivityIndicator} from "react-native-paper";
@@ -20,7 +18,7 @@ const App = () => {
 
     const [user, setUser] = useState(null)
     const [token, setToken] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         fetchUser()
@@ -79,7 +77,7 @@ const App = () => {
                 <>
                     {user ? (
                         <NavigationContainer>
-                            <Stack.Navigator initialRouteName="HomeScreen">
+                            <Stack.Navigator>
                                 <Stack.Screen
                                     name="HomeScreen"
                                     component={HomeScreen}
