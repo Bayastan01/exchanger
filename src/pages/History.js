@@ -1,6 +1,7 @@
 import React from 'react'
 import {View, FlatList, StyleSheet, Text, ScrollView} from 'react-native'
 import {Avatar, Caption, Paragraph} from 'react-native-paper'
+import moment from 'moment'
 
 function History() {
 
@@ -29,7 +30,7 @@ function History() {
   return (
     <ScrollView style={{backgroundColor: '#272B34', height: '100%'}}>
       <Caption style={{...styles.title, marginVertical: 20, marginHorizontal: 20}}>
-        28 AПРЕЛЯ
+        {moment().locale('Привет').format('LL')}
       </Caption>
       <FlatList
       data={DATA}

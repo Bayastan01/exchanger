@@ -13,6 +13,9 @@ function Exchange() {
     alert('Ваш баланс менял')
   }
 
+  const get_money$ = (money_$ * 81).toFixed(2)
+  const get_money$T = (money_$T * 82).toFixed(2)
+
   return (
     <KeyboardAvoidingView style={{backgroundColor: '#272B34', height: '100%'}}>
         <ScrollView style={styles.scrollView}>
@@ -58,7 +61,7 @@ function Exchange() {
             <View style={{flexGrow: 12}}>
               <TextInput
                 placeholderTextColor="black"
-                placeholder={`${(money_$ * 81).toFixed(2) && (money_$T * 82).toFixed(2)} C`}
+                placeholder={`${money_$ > 0 ? get_money$ : get_money$T} С`}
                 keyboardType="numeric"
                 style={styles.myInput}
               />
