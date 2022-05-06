@@ -16,7 +16,7 @@ function AuthRegistration() {
 
     const AddUser = (data) => {
         setLoading(true)
-        axios.post('http://192.168.117.180:5002/api/v1/auth/sign-up', {
+        axios.post('http://192.168.21.180:5002/api/v1/auth/sign-up', {
             [data.type]: data.user,
             [data.type === 'email' ? 'phone_number' : 'email']: null,
             password: data.user_password
@@ -28,7 +28,7 @@ function AuthRegistration() {
                 Alert.alert('Ошибка', 'Такой пользователь уже существует!')
             }
         }).finally(() => {
-            // setLoading(false)
+            setLoading(false)
         })
     }
 
