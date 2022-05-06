@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {
     Image,
     SafeAreaView,
@@ -10,11 +10,32 @@ import {
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {useNavigation} from "@react-navigation/native";
 import {GlobalContext} from "../../App";
+import axios from "axios";
 
 function Balance() {
+    const {token} = useContext(GlobalContext)
+    const [well$, setWell$] = useState(0)
+    const [well$T, setWell$T] = useState(0)
     const {navigate} = useNavigation()
     const {user} = useContext(GlobalContext)
-    console.log(user)
+
+
+    useEffect(() => {
+        well()
+    }, [])
+
+    const well = () => {
+        console.log(token)
+        axios.get('http://192.168.21.180:5002/api/v1/exchange', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        })
+            .then((data) => {
+                setWell$(data.data.payload.rate_usd)
+                setWell$T(data.data.payload.rate_usdt)
+            })
+    }
 
     return (
         <ScrollView style={{backgroundColor: '#272B34', height: '100%'}}>
@@ -65,7 +86,7 @@ function Balance() {
                     <View style={styles.itemAddValuta}>
                         <View style={styles.DataView}>
                             <Text style={styles.itemDollar}><Text>1 USD </Text></Text>
-                            <Text style={styles.itemSom}>80,13 <Text>c</Text></Text>
+                            <Text style={styles.itemSom}>{well$}<Text>c</Text></Text>
                         </View>
                         <View>
                             <Image
@@ -80,7 +101,7 @@ function Balance() {
                     <View style={styles.itemAddValuta}>
                         <View style={styles.DataView}>
                             <Text style={styles.itemDollar}><Text>1 USDT </Text></Text>
-                            <Text style={styles.itemSom}>82.67<Text>c</Text></Text>
+                            <Text style={styles.itemSom}>{well$T}<Text>c</Text></Text>
                         </View>
                         <View>
                             <Image
