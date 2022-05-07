@@ -26,7 +26,7 @@ function Balance() {
 
     const well = () => {
         console.log(token)
-        axios.get('http://192.168.53.180:5002/api/v1/exchange', {
+        axios.get('http://192.168.83.180:5002/api/v1/exchange', {
             headers: {
                 'Authorization': `Bearer ${token}`,
             }

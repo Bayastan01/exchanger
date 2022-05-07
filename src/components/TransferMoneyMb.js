@@ -1,4 +1,4 @@
-  import React, {useContext, useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {Button, Caption, TextInput} from 'react-native-paper'
 import {StyleSheet, Text, View} from 'react-native'
 import {VERIFICATION_CODE_LENGTH} from '../settings/settings'
@@ -14,7 +14,7 @@ function TransferMoneyMb() {
   const [сommission, setCommission] = useState('0.5%')
 
   const Send_money = () => {
-    axios.post('http://192.168.53.180:5002/api/v1/exchange', {
+    axios.post('http://192.168.83.180:5002/api/v1/exchange', {
       to: 'mbank',
       sum: mbSum,
       requisite: mbNumber
