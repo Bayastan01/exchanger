@@ -14,7 +14,7 @@ function TransferMoneyMb() {
   const [сommission, setCommission] = useState('0.5%')
 
   const Send_money = () => {
-    axios.post('http://192.168.121.180:5002/api/v1/exchange', {
+    axios.post('http://192.168.53.180:5002/api/v1/exchange', {
       mbnumber: mbNumber,
       mbsum: mbSum,
     }, {

@@ -33,7 +33,7 @@ function Exchange() {
   }, [])
 
   const well = () => {
-   axios.get('http://192.168.21.180:5002/api/v1/exchange', {
+   axios.get('http://192.168.53.180:5002/api/v1/exchange', {
      headers: {
        'Authorization': `Bearer ${token}`,
      }

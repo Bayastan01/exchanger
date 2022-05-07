@@ -11,7 +11,9 @@ const screenSize = Dimensions.get('window');
 
 const Profile = () => {
     const [password_key, setPassword_key] = useState(true);
+    const [password_key2, setPassword_key2] = useState(true);
     const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
     const [name_key, setName_key] = useState(true);
     const [name, setName] = useState('');
     const [number_key, setNumber_key] = useState(true);
@@ -19,6 +21,7 @@ const Profile = () => {
     const [email_key, setEmail_key] = useState(true);
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState(true)
+    const [pass2, setPass2] = useState(true)
     const {user, signOut} = useContext(GlobalContext)
 
     const add = () =>
@@ -59,11 +62,6 @@ const Profile = () => {
                     </View>
                     <View>
                         <View style={styles.textinput}>
-                            <FontAwesome
-                                style={styles.icons2}
-                                name='phone'
-                                color={"white"}
-                                size={30}/>
                             <TextInput
                                 style={styles.input}
                                 mode='outlined'
@@ -92,11 +90,7 @@ const Profile = () => {
                             )}
                         </View>
                         <View style={styles.textinput}>
-                            <Fontisto
-                                style={styles.icons3}
-                                name='email'
-                                color={"white"}
-                                size={27}/>
+
                             <TextInput
                                 style={styles.input}
                                 mode='outlined'
@@ -125,11 +119,7 @@ const Profile = () => {
                             )}
                         </View>
                         <View style={styles.textinput}>
-                            <FontAwesome
-                                style={styles.icons4}
-                                name='lock'
-                                color={"white"}
-                                size={30}/>
+
                             <TextInput
                                 style={styles.input}
                                 secureTextEntry={pass}
@@ -138,12 +128,13 @@ const Profile = () => {
                                 outlineColor="#3f51b5"
                                 disabled={password_key}
                                 dense={true}
-                                placeholder="Пароль"
+                                placeholder="текущий пароль"
                                 value={password}
                                 onChangeText={l => setPassword(l)}
                                 right={<TextInput.Icon onPress={() => setPass(p => !p)}
                                                        name={pass ? 'eye-off' : 'eye'}/>}
                             />
+
                             {password_key ? (
                                 <Ionicons
                                     style={styles.pencil}
@@ -160,6 +151,38 @@ const Profile = () => {
                                     onPress={() => setPassword_key(true)}/>
                             )}
 
+                        </View>
+
+                        <View style={styles.textinput}>
+                        <TextInput
+                            style={styles.input}
+                            secureTextEntry={pass2}
+                            mode='outlined'
+                            activeOutlineColor='green'
+                            outlineColor="#3f51b5"
+                            disabled={password_key2}
+                            dense={true}
+                            placeholder="Новый пароль"
+                            value={password2}
+                            onChangeText={l => setPassword2(l)}
+                            right={<TextInput.Icon onPress={() => setPass2(p => !p)}
+                                                   name={pass2 ? 'eye-off' : 'eye'}/>}
+                        />
+                            {password_key2 ? (
+                                <Ionicons
+                                    style={styles.pencil}
+                                    name='pencil'
+                                    color={'#3f51b5'}
+                                    size={27}
+                                    onPress={() => setPassword_key2(false)}/>
+                            ) : (
+                                <Entypo
+                                    style={styles.pencil}
+                                    name='check'
+                                    color={'green'}
+                                    size={27}
+                                    onPress={() => setPassword_key2(true)}/>
+                            )}
                         </View>
                     </View>
                 </View>
@@ -186,7 +209,7 @@ const styles = StyleSheet.create({
     },
     myButton: {
         marginHorizontal: 20,
-        marginVertical: 20,
+        marginVertical: 10,
         paddingVertical: 2,
     },
     pencil: {
@@ -200,8 +223,8 @@ const styles = StyleSheet.create({
     textinput: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 10,
-        marginTop: 10,
+        marginBottom: 5,
+        marginTop: 5,
         marginHorizontal: 15,
     },
     avatar: {
