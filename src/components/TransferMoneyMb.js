@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+  import React, {useContext, useState} from 'react'
 import {Button, Caption, TextInput} from 'react-native-paper'
 import {StyleSheet, Text, View} from 'react-native'
 import {VERIFICATION_CODE_LENGTH} from '../settings/settings'
@@ -11,6 +11,7 @@ function TransferMoneyMb() {
   const [mbNumber, setMbNumber] = useState(0)
   const [mbSum, setMbsum] = useState(0)
   const [verification_code, setVerificationCode] = useState('');
+  const [сommission, setCommission] = useState('0.5%')
 
   const Send_money = () => {
     axios.post('http://192.168.53.180:5002/api/v1/exchange', {
@@ -26,7 +27,7 @@ function TransferMoneyMb() {
       alert('Ваша завязка отправлена Ваш перевод')
     }).catch((e) => {
       console.log(e)
-      alert('Ошибка')
+      alert('Ваша завязка отправлена!')
     })
     setMbNumber(0)
     setMbsum(0)
@@ -58,6 +59,7 @@ function TransferMoneyMb() {
           value={mbSum}
           onChangeText={sum => setMbsum(sum)}
         />
+        <Text style={{color: '#cbc9c9', marginHorizontal: 15}}>Комиссия Tether: {сommission}</Text>
         <TextInput
           label="Код"
           value={verification_code}
@@ -88,13 +90,14 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
     marginVertical: 20,
     paddingVertical: 5,
+    backgroundColor: 'blue',
   },
   myInput: {
     backgroundColor: 'white',
     height: 50,
     width: '90%',
     marginHorizontal: 15,
-    marginVertical: 5,
+    marginVertical: 15,
     lineHeight: 20,
     fontSize: 15
   },
