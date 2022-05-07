@@ -4,6 +4,9 @@ import {Avatar, Caption, Paragraph} from 'react-native-paper'
 import moment from 'moment'
 import axios from 'axios'
 import {GlobalContext} from '../../App'
+import 'moment/locale/ru'
+
+moment.locale('ru')
 
 function History() {
   const {token} = useContext(GlobalContext)
@@ -36,7 +39,7 @@ function History() {
   }, [])
 
   const history = () => {
-    axios.get('http://192.168.21.180:5002/api/v1/history', {
+    axios.get('http://192.168.53.180:5002/api/v1/exchange/history', {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
@@ -52,7 +55,7 @@ function History() {
   return (
     <ScrollView style={{backgroundColor: '#272B34', height: '100%'}}>
       <Caption style={{...styles.title, marginVertical: 20, marginHorizontal: 20}}>
-        {moment().locale('Привет').format('LL')}
+        {moment().format('LL')}
       </Caption>
       <FlatList
       data={DATA}
@@ -67,7 +70,7 @@ function History() {
               <Paragraph style={styles.title}>{item.title}</Paragraph>
             </View>
             <View style={{flexGrow: 1}}>
-              <Text style={styles.title}>- {item.price} Cом</Text>
+              <Text style={styles.title} onPress={() => history()}>+ {item.price} Cом</Text>
             </View>
           </View>
         </>

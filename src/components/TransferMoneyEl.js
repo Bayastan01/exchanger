@@ -14,9 +14,10 @@ function TransferMoneyEl() {
   const [сommission, setCommission] = useState('0.5%')
 
   const Send_money = () => {
-    axios.post('http://192.168.53.180:5002/api/v1/exchange', {
-      elnumber: elNumber,
-      elsum: elSum,
+    axios.post('http://192.168.53.180:5002/api/v1/transfer', {
+      to: 'elcard',
+      sum: elSum,
+      requisite: elNumber
     }, {
       headers: {
         'Authorization': `Bearer ${token}`,

@@ -6,26 +6,29 @@ import axios from 'axios'
 
 function Exchange() {
   const {user} = useContext(GlobalContext)
-  const {token} = useContext(GlobalContext)
+  const {token, setUser} = useContext(GlobalContext)
   const [well$, setWell$] = useState(0)
   const [well$T, setWell$T] = useState(0)
   const [money_$, setMoney_$] = useState(0)
   const [money_$T, setMoney_$T] = useState(0)
 
   const change_money = () => {
-    axios.post('http://192.168.21.180:5002/api/v1/exchange', {
-      rate_usd: money_$,
-      rate_usdt: money_$T,
+    axios.post('http://192.168.53.180:5002/api/v1/exchange', {
+      currency: money_$ > 0 ? 'usd' : 'usdt',
+      amount: money_$ > 0 ? money_$ : money_$T
     }, {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
     },).then((response) => {
       console.log(response)
+      setUser(response.data.payload.user)
+      alert('Ваш баланс менял')
+      setMoney_$(0)
+      setMoney_$T(0)
     }).catch((e) => {
       console.log(e)
     })
-    alert('Ваш баланс менял')
   }
 
   useEffect(() => {
@@ -48,8 +51,8 @@ function Exchange() {
      })
   }
 
-  const get_money$ = (money_$ * 81).toFixed(2)
-  const get_money$T = (money_$T * 82).toFixed(2)
+  const get_money$ = (money_$ * well$).toFixed(2)
+  const get_money$T = (money_$T * well$T).toFixed(2)
 
   return (
     <KeyboardAvoidingView style={{backgroundColor: '#272B34', height: '100%'}}>
@@ -64,7 +67,7 @@ function Exchange() {
                 keyboardType="numeric"
                 style={styles.myInput}
                 value={money_$ + ''}
-                onChangeText={sum => setMoney_$(+sum)}
+                onChangeText={sum => setMoney_$(parseFloat(sum))}
               />
               <Paragraph style={styles.myParagraph}>Баланс {user.balance_usd} USD</Paragraph>
             </View>
@@ -82,7 +85,7 @@ function Exchange() {
                 keyboardType="numeric"
                 style={styles.myInput}
                 value={money_$T + ''}
-                onChangeText={sum => setMoney_$T(+sum)}
+                onChangeText={sum => setMoney_$T(parseFloat(sum))}
               />
               <Paragraph style={styles.myParagraph}>Баланс {user.balance_usdt} USDT</Paragraph>
             </View>
@@ -96,6 +99,7 @@ function Exchange() {
             <View style={{flexGrow: 12}}>
               <TextInput
                 placeholderTextColor="black"
+                disabled={true}
                 placeholder={`${money_$ > 0 ? get_money$ : get_money$T} С`}
                 keyboardType="numeric"
                 style={styles.myInput}

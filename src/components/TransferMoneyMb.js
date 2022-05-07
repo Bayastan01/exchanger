@@ -15,8 +15,9 @@ function TransferMoneyMb() {
 
   const Send_money = () => {
     axios.post('http://192.168.53.180:5002/api/v1/exchange', {
-      mbnumber: mbNumber,
-      mbsum: mbSum,
+      to: 'mbank',
+      sum: mbSum,
+      requisite: mbNumber
     }, {
       headers: {
         'Authorization': `Bearer ${token}`,
