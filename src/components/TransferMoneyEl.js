@@ -6,15 +6,14 @@ import {GlobalContext} from '../../App'
 import axios from 'axios'
 
 function TransferMoneyEl() {
-  const {user} = useContext(GlobalContext)
-  const {token} = useContext(GlobalContext)
+  const {user, token, setUser} = useContext(GlobalContext)
   const [elNumber, setElNumber] = useState(0)
   const [elSum, setElsum] = useState(0)
   const [verification_code, setVerificationCode] = useState('');
   const [сommission, setCommission] = useState('0.5%')
 
   const Send_money = () => {
-    axios.post('http://192.168.53.180:5002/api/v1/transfer', {
+    axios.post('http://192.168.177.180:5002/api/v1/transfer', {
       to: 'elcard',
       sum: elSum,
       requisite: elNumber
@@ -24,10 +23,11 @@ function TransferMoneyEl() {
       }
     },).then((response) => {
       console.log(response)
-      alert('Ваша завязка отправлена Ваш перевод')
+      alert(`Ваша завязка отправлена Ваш перевод ${elSum}`)
+      setUser(response.data.payload.user)
     }).catch((e) => {
       console.log(e)
-      alert('Ваша завязка отправлена!')
+      alert('Ошибка')
     })
     setElNumber(0)
     setElsum(0)
