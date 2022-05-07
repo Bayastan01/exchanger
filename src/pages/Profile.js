@@ -6,6 +6,7 @@ import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Fontisto from "react-native-vector-icons/Fontisto";
 import Entypo from "react-native-vector-icons/Entypo";
 import {GlobalContext} from "../../App";
+import axios from 'axios'
 
 const screenSize = Dimensions.get('window');
 
@@ -22,6 +23,19 @@ const Profile = () => {
     const {user, signOut} = useContext(GlobalContext)
 
     const add = () =>
+      // axios.post('http://192.168.53.180:5002/api/v1/profile', {
+      //
+      // }, {
+      //     headers: {
+      //         'Authorization': `Bearer ${token}`,
+      //     }
+      // },).then((response) => {
+      //     console.log(response)
+      //     alert('Ваша завязка отправлена Ваш перевод')
+      // }).catch((e) => {
+      //     console.log(e)
+      //     alert('Ошибка')
+      // })}
         Alert.alert(
             "Good Bayastan",
             "Озгорду",

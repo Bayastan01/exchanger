@@ -13,9 +13,10 @@ function TransferMoneyEl() {
   const [verification_code, setVerificationCode] = useState('');
 
   const Send_money = () => {
-    axios.post('http://192.168.21.180:5002/api/v1/exchange', {
-      elnumber: elNumber,
-      elsum: elSum,
+    axios.post('http://192.168.53.180:5002/api/v1/transfer', {
+      to: 'elcard',
+      sum: elSum,
+      requisite: elNumber
     }, {
       headers: {
         'Authorization': `Bearer ${token}`,
