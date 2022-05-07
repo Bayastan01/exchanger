@@ -1,4 +1,4 @@
-  import React, {useContext, useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {Button, Caption, TextInput} from 'react-native-paper'
 import {StyleSheet, Text, View} from 'react-native'
 import {VERIFICATION_CODE_LENGTH} from '../settings/settings'
