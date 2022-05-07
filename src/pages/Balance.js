@@ -86,7 +86,7 @@ function Balance() {
                     <View style={styles.itemAddValuta}>
                         <View style={styles.DataView}>
                             <Text style={styles.itemDollar}><Text>1 USD </Text></Text>
-                            <Text style={styles.itemSom}>{well$}<Text>c</Text></Text>
+                            <Text style={styles.itemSom}>{well$} <Text>c</Text></Text>
                         </View>
                         <View>
                             <Image
@@ -101,7 +101,7 @@ function Balance() {
                     <View style={styles.itemAddValuta}>
                         <View style={styles.DataView}>
                             <Text style={styles.itemDollar}><Text>1 USDT </Text></Text>
-                            <Text style={styles.itemSom}>{well$T}<Text>c</Text></Text>
+                            <Text style={styles.itemSom}>{well$T} <Text>c</Text></Text>
                         </View>
                         <View>
                             <Image
