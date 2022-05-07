@@ -20,7 +20,7 @@ function History() {
   }, [])
 
   const history = () => {
-    axios.get(API_URL + '/api/v1/exchange/history', {
+    axios.get('http://192.168.177.180:5002/api/v1/exchange/history', {
       headers: {
         'Authorization': `Bearer ${token}`,
       }

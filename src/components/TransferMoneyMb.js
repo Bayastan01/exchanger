@@ -6,15 +6,14 @@ import {GlobalContext} from '../../App'
 import axios from 'axios'
 
 function TransferMoneyMb() {
-  const {user} = useContext(GlobalContext)
-  const {token} = useContext(GlobalContext)
+  const {user, token, setUser} = useContext(GlobalContext)
   const [mbNumber, setMbNumber] = useState(0)
   const [mbSum, setMbsum] = useState(0)
   const [verification_code, setVerificationCode] = useState('');
   const [сommission, setCommission] = useState('0.5%')
 
   const Send_money = () => {
-    axios.post('http://192.168.83.180:5002/api/v1/exchange', {
+    axios.post('http://192.168.177.180:5002/api/v1/transfer', {
       to: 'mbank',
       sum: mbSum,
       requisite: mbNumber
@@ -24,10 +23,11 @@ function TransferMoneyMb() {
       }
     },).then((response) => {
       console.log(response)
-      alert('Ваша завязка отправлена Ваш перевод')
+      alert(`Ваша завязка отправлена Ваш перевод ${mbSum}`)
+      setUser(response.data.payload.user)
     }).catch((e) => {
       console.log(e)
-      alert('Ваша завязка отправлена!')
+      alert('Ошибка')
     })
     setMbNumber(0)
     setMbsum(0)

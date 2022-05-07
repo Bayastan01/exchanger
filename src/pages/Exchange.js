@@ -13,7 +13,7 @@ function Exchange() {
   const [money_$T, setMoney_$T] = useState(0)
 
   const change_money = () => {
-    axios.post('http://192.168.83.180:5002/api/v1/exchange', {
+    axios.post('http://192.168.177.180:5002/api/v1/exchange', {
       currency: money_$ > 0 ? 'usd' : 'usdt',
       amount: money_$ > 0 ? money_$ : money_$T
     }, {
@@ -36,7 +36,7 @@ function Exchange() {
   }, [])
 
   const well = () => {
-   axios.get('http://192.168.53.180:5002/api/v1/exchange', {
+   axios.get('http://192.168.177.180:5002/api/v1/exchange', {
      headers: {
        'Authorization': `Bearer ${token}`,
      }

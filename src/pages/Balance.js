@@ -26,7 +26,7 @@ function Balance() {
 
     const well = () => {
         console.log(token)
-        axios.get('http://192.168.83.180:5002/api/v1/exchange', {
+        axios.get('http://192.168.177.180:5002/api/v1/exchange', {
             headers: {
                 'Authorization': `Bearer ${token}`,
             }
@@ -86,7 +86,7 @@ function Balance() {
                     <View style={styles.itemAddValuta}>
                         <View style={styles.DataView}>
                             <Text style={styles.itemDollar}><Text>1 USD </Text></Text>
-                            <Text style={styles.itemSom}>{well$} <Text>c</Text></Text>
+                            <Text style={styles.itemSom}>{well$} С</Text>
                         </View>
                         <View>
                             <Image
@@ -101,7 +101,7 @@ function Balance() {
                     <View style={styles.itemAddValuta}>
                         <View style={styles.DataView}>
                             <Text style={styles.itemDollar}><Text>1 USDT </Text></Text>
-                            <Text style={styles.itemSom}>{well$T} <Text>c</Text></Text>
+                            <Text style={styles.itemSom}>{well$T} С</Text>
                         </View>
                         <View>
                             <Image
