@@ -18,7 +18,7 @@ const App = () => {
 
     const [user, setUser] = useState(null)
     const [token, setToken] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         fetchUser()
@@ -45,8 +45,8 @@ const App = () => {
 
     const signIn = data => {
         AsyncStorage.setItem('user_data', JSON.stringify(data)).then(() => {
-            setUser(data.user)
             setToken(data.token)
+            setUser(data.user)
         })
     }
 

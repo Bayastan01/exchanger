@@ -13,7 +13,7 @@ function Exchange() {
   const [money_$T, setMoney_$T] = useState(0)
 
   const change_money = () => {
-    axios.post('http://192.168.177.180:5002/api/v1/exchange', {
+    axios.post('http://192.168.0.102:5002/api/v1/exchange', {
       currency: money_$ > 0 ? 'usd' : 'usdt',
       amount: money_$ > 0 ? money_$ : money_$T
     }, {
@@ -33,10 +33,10 @@ function Exchange() {
 
   useEffect(() => {
     well()
-  }, [])
+  }, [user])
 
   const well = () => {
-   axios.get('http://192.168.177.180:5002/api/v1/exchange', {
+   axios.get('http://192.168.0.102:5002/api/v1/exchange', {
      headers: {
        'Authorization': `Bearer ${token}`,
      }
@@ -84,7 +84,7 @@ function Exchange() {
                 placeholder={`${money_$T.toFixed(2)} $`}
                 keyboardType="numeric"
                 style={styles.myInput}
-                value={money_$T + ''}
+                value={money_$T}
                 onChangeText={sum => setMoney_$T(parseFloat(sum))}
               />
               <Paragraph style={styles.myParagraph}>Баланс {user.balance_usdt} USDT</Paragraph>

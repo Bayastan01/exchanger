@@ -16,7 +16,7 @@ const AuthComponent = (props) => {
 
     const SignUser = (data) => {
         setLoading(true)
-        axios.post('http://192.168.177.180:5002/api/v1/auth/sign-in', {
+        axios.post('http://192.168.0.102:5002/api/v1/auth/sign-in', {
             [data.type]: data.user,
             [data.type === 'email' ? 'phone_number' : 'email']: null,
             password: data.user_password

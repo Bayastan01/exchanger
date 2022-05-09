@@ -23,38 +23,25 @@ const Profile = () => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState(true)
     const [pass2, setPass2] = useState(true)
-    const {user, signOut} = useContext(GlobalContext)
+    const {user, signOut, token} = useContext(GlobalContext)
 
-    const add = () =>
-      // axios.post('http://192.168.53.180:5002/api/v1/profile', {
-      //
-      // }, {
-      //     headers: {
-      //         'Authorization': `Bearer ${token}`,
-      //     }
-      // },).then((response) => {
-      //     console.log(response)
-      //     alert('Ваша завязка отправлена Ваш перевод')
-      // }).catch((e) => {
-      //     console.log(e)
-      //     alert('Ошибка')
-      // })}
-        Alert.alert(
-            "Good Bayastan",
-            "Озгорду",
-            [
-
-                {
-                    text: "Отмена",
-                    onPress: () => console.log("Cancel Pressed"),
-                    style: "Отмена"
-                },
-                {text: "OK", onPress: () => console.log("OK Pressed")}
-            ]
-        );
+    const add = () => {
+      axios.post('http://192.168.0.102:5002/api/v1/auth/password', {
+          current_password: password,
+          new_password: password2
+      }, {
+          headers: {
+              'Authorization': `Bearer ${token}`,
+          }
+      },).then((response) => {
+          console.log(response)
+          alert('Ваш данный изменён')
+      }).catch((e) => {
+          console.log(e)
+          alert('Ошибка')
+      })}
 
     useEffect(() => {
-        setName(user.full_name)
         setNumber(user.phone_number)
         setEmail(user.email)
     }, [])
@@ -148,7 +135,6 @@ const Profile = () => {
                                 right={<TextInput.Icon onPress={() => setPass(p => !p)}
                                                        name={pass ? 'eye-off' : 'eye'}/>}
                             />
-
                             {password_key ? (
                                 <Ionicons
                                     style={styles.pencil}
@@ -164,9 +150,7 @@ const Profile = () => {
                                     size={27}
                                     onPress={() => setPassword_key(true)}/>
                             )}
-
                         </View>
-
                         <View style={styles.textinput}>
                         <TextInput
                             style={styles.input}
@@ -201,13 +185,16 @@ const Profile = () => {
                     </View>
                 </View>
                 <Button
-                    style={styles.myButton}
+                    style={{
+                        marginHorizontal: 20,
+                        marginTop: 30,
+                        paddingVertical: 2,
+                    }}
                     mode="contained"
-                //     onPress={() => save()}
+                    onPress={() => add()}
                     >
                     Сохранить
                 </Button>
-
                 <Button style={styles.myButton}
                  mode="contained" onPress={signOut}>
                     Выйти

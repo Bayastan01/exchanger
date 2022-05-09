@@ -13,7 +13,7 @@ function TransferMoneyEl() {
   const [сommission, setCommission] = useState('0.5%')
 
   const Send_money = () => {
-    axios.post('http://192.168.177.180:5002/api/v1/transfer', {
+    axios.post('http://192.168.0.102:5002/api/v1/transfer', {
       to: 'elcard',
       sum: elSum,
       requisite: elNumber
