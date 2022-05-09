@@ -66,6 +66,7 @@ function Exchange() {
                 placeholder={`${money_$.toFixed(2)} $`}
                 keyboardType="numeric"
                 style={styles.myInput}
+                disabled={money_$T}
                 value={money_$ + ''}
                 onChangeText={sum => setMoney_$(parseFloat(sum))}
               />
@@ -83,8 +84,9 @@ function Exchange() {
                 placeholderTextColor="black"
                 placeholder={`${money_$T.toFixed(2)} $`}
                 keyboardType="numeric"
+                disabled={money_$}
                 style={styles.myInput}
-                value={money_$T}
+                value={money_$T + ''}
                 onChangeText={sum => setMoney_$T(parseFloat(sum))}
               />
               <Paragraph style={styles.myParagraph}>Баланс {user.balance_usdt} USDT</Paragraph>
