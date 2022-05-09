@@ -22,19 +22,22 @@ function Balance() {
 
     useEffect(() => {
         well()
-    }, [])
+    }, [user])
 
     const well = () => {
-        console.log(token)
-        axios.get('http://192.168.177.180:5002/api/v1/exchange', {
+        axios.get('http://192.168.0.102:5002/api/v1/exchange', {
             headers: {
                 'Authorization': `Bearer ${token}`,
             }
         })
-            .then((data) => {
-                setWell$(data.data.payload.rate_usd)
-                setWell$T(data.data.payload.rate_usdt)
-            })
+          .then((data) => {
+              setWell$(data.data.payload.rate_usd)
+              setWell$T(data.data.payload.rate_usdt)
+              console.log(data.data.payload)
+          })
+          .catch((e) => {
+              console.log(e)
+          })
     }
 
     return (
@@ -45,13 +48,13 @@ function Balance() {
                         <Image
                             style={styles.square}
                             source={{
-                                uri: 'https://i.pinimg.com/736x/fe/46/da/fe46dac1c5fb329e97f1c31b21aa7a88.jpg',
+                                uri: 'https://thumbs.dreamstime.com/b/%D0%B7%D0%BE%D0%BB%D0%BE%D1%82%D0%BE-%D1%84%D1%83%D1%82%D1%83%D1%80%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%BF%D1%80%D0%B8%D0%B2%D1%8F%D0%B7%D1%8B%D0%B2%D0%B0%D0%B5%D1%82-%D0%B8%D0%BB%D0%BB%D1%8E%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8E-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0-cryptocurrency-187925201.jpg',
                             }}
                         />
                     </View>
                     <View style={styles.DataView}>
                         <Text style={styles.itemSmall}>№ счета</Text>
-                        <Text style={styles.itemText}>1232488929191</Text>
+                        <Text style={styles.itemText}>{user.email}{user.phone_number}</Text>
                     </View>
                     <MaterialCommunityIcons
                         name="bell-badge-outline"

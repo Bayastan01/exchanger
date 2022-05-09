@@ -5,22 +5,19 @@ import moment from 'moment'
 import axios from 'axios'
 import {GlobalContext} from '../../App'
 import 'moment/locale/ru'
-import {API_URL} from "../settings/settings";
-
 moment.locale('ru')
 
 function History() {
-  const {token} = useContext(GlobalContext)
+  const {token, setUser, user} = useContext(GlobalContext)
   const [history_, setHistory_] = useState([])
 
 
   useEffect(() => {
-      console.log(history_)
     history()
-  }, [])
+  }, [user])
 
   const history = () => {
-    axios.get('http://192.168.177.180:5002/api/v1/exchange/history', {
+    axios.get('http://192.168.0.102:5002/api/v1/exchange/history', {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
@@ -36,7 +33,7 @@ function History() {
   console.log(history_)
   return (
     <ScrollView style={{backgroundColor: '#272B34', height: '100%'}}>
-      <Caption style={{...styles.title, marginVertical: 20, marginHorizontal: 20}}>
+      <Caption style={{...styles.title, marginVertical: 20, marginHorizontal: 20, textAlign: 'center'}}>
         {moment().format('LL')}
       </Caption>
       <FlatList
@@ -51,6 +48,7 @@ function History() {
             <View style={{flexGrow: 5}}>
               <Paragraph style={styles.title}>Вы обменили</Paragraph>
                 <Text style={{color: '#fff'}}>Курс: {item.from_currency} - {item.currency_rate}</Text>
+                <Text style={{color: '#fff'}}>Обмен: {item.from_amount} {item.from_currency}</Text>
                 <Text style={{color: '#fff', fontSize: 10, marginTop: 10}}>{item.created_at}</Text>
             </View>
             <View style={{flexGrow: 1}}>
@@ -74,7 +72,6 @@ const styles = StyleSheet.create({
   },
   title: {
     color: '#fff',
-    marginHorizontal: 4,
     fontSize: 16,
   },
 });
