@@ -6,6 +6,7 @@ import {
     ScrollView,
     Text,
     View,
+    RefreshControl
 } from 'react-native';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import {useNavigation} from "@react-navigation/native";
@@ -13,12 +14,30 @@ import {GlobalContext} from "../../App";
 import axios from "axios";
 
 function Balance() {
-    const {token} = useContext(GlobalContext)
+    const {token, setUser} = useContext(GlobalContext)
     const [well$, setWell$] = useState(0)
     const [well$T, setWell$T] = useState(0)
     const {navigate} = useNavigation()
     const {user} = useContext(GlobalContext)
+    const [refreshing, setRefreshing] = useState(false);
 
+    const onRefresh = React.useCallback(() => {
+        setRefreshing(true);
+        axios.get('http://192.168.0.102:5002/api/v1/auth/me', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        })
+          .then((data) => {
+              setUser(data.data.payload.user)
+          })
+          .catch((e) => {
+              console.log(e)
+          })
+          .finally(() => {
+              setRefreshing(false)
+          })
+    }, []);
 
     useEffect(() => {
         well()
@@ -41,7 +60,15 @@ function Balance() {
     }
 
     return (
-        <ScrollView style={{backgroundColor: '#272B34', height: '100%'}}>
+        <ScrollView
+          style={{backgroundColor: '#272B34', height: '100%'}}
+          refreshControl={
+              <RefreshControl
+                refreshing={refreshing}
+                onRefresh={onRefresh}
+              />
+          }
+        >
             <SafeAreaView style={styles.container}>
                 <View style={styles.itemAdd}>
                     <View>
