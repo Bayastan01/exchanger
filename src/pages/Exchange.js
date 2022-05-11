@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
-import {KeyboardAvoidingView, ScrollView, StyleSheet, Text, View} from 'react-native'
+import {KeyboardAvoidingView, RefreshControl, ScrollView, StyleSheet, Text, View} from 'react-native'
 import {Paragraph, TextInput, Avatar, Button} from 'react-native-paper'
 import {GlobalContext} from '../../App'
 import axios from 'axios'
@@ -7,10 +7,34 @@ import axios from 'axios'
 function Exchange() {
   const {user} = useContext(GlobalContext)
   const {token, setUser} = useContext(GlobalContext)
+  const [refreshing, setRefreshing] = useState(false);
+
   const [well$, setWell$] = useState(0)
   const [well$T, setWell$T] = useState(0)
+
   const [money_$, setMoney_$] = useState(0)
   const [money_$T, setMoney_$T] = useState(0)
+
+  const [tmoney_$, setTmoney_$] = useState('')
+  const [tmoney_$T, setTmoney_$T] = useState('')
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    axios.get('http://192.168.0.102:5002/api/v1/auth/me', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
+      .then((data) => {
+        setUser(data.data.payload.user)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+      .finally(() => {
+        setRefreshing(false)
+      })
+  }, []);
 
   const change_money = () => {
     axios.post('http://192.168.0.102:5002/api/v1/exchange', {
@@ -24,8 +48,8 @@ function Exchange() {
       console.log(response)
       setUser(response.data.payload.user)
       alert('Ваш баланс менял')
-      setMoney_$(0)
-      setMoney_$T(0)
+      setTmoney_$(0)
+      setTmoney_$T(0)
     }).catch((e) => {
       console.log(e)
     })
@@ -51,12 +75,38 @@ function Exchange() {
      })
   }
 
-  const get_money$ = (money_$ * well$).toFixed(2)
-  const get_money$T = (money_$T * well$T).toFixed(2)
+  const get_money$ = (tmoney_$ * well$).toFixed(2)
+  const get_money$T = (tmoney_$T * well$T).toFixed(2)
+
+  useEffect(() => {
+    const t = +tmoney_$
+    if (tmoney_$ === '') {
+      setMoney_$(0)
+    } else if (!isNaN(t)) {
+      setMoney_$(t)
+    }
+  }, [tmoney_$])
+
+  useEffect(() => {
+    const t = +tmoney_$T
+    if (tmoney_$T === '') {
+      setMoney_$T(0)
+    } else if (!isNaN(t)) {
+      setMoney_$T(t)
+    }
+  }, [tmoney_$T])
 
   return (
     <KeyboardAvoidingView style={{backgroundColor: '#272B34', height: '100%'}}>
-        <ScrollView style={styles.scrollView}>
+        <ScrollView
+          style={styles.scrollView}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+            />
+          }
+        >
           <Text style={{textAlign: 'center', marginVertical: 20, fontSize: 24, fontWeight: '500', color: '#fff'}}>Обменять</Text>
           <View style={{flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center'}}>
             <View style={{flexGrow: 12}}>
@@ -66,9 +116,9 @@ function Exchange() {
                 placeholder={`${money_$.toFixed(2)} $`}
                 keyboardType="numeric"
                 style={styles.myInput}
-                disabled={money_$T}
-                value={money_$ + ''}
-                onChangeText={sum => setMoney_$(parseFloat(sum))}
+                disabled={tmoney_$T}
+                value={tmoney_$}
+                onChangeText={sum => setTmoney_$(sum)}
               />
               <Paragraph style={styles.myParagraph}>Баланс {user.balance_usd} USD</Paragraph>
             </View>
@@ -84,10 +134,10 @@ function Exchange() {
                 placeholderTextColor="black"
                 placeholder={`${money_$T.toFixed(2)} $`}
                 keyboardType="numeric"
-                disabled={money_$}
+                disabled={tmoney_$}
                 style={styles.myInput}
-                value={money_$T + ''}
-                onChangeText={sum => setMoney_$T(parseFloat(sum))}
+                value={tmoney_$T}
+                onChangeText={sum => setTmoney_$T(sum)}
               />
               <Paragraph style={styles.myParagraph}>Баланс {user.balance_usdt} USDT</Paragraph>
             </View>
@@ -102,7 +152,7 @@ function Exchange() {
               <TextInput
                 placeholderTextColor="black"
                 disabled={true}
-                placeholder={`${money_$ > 0 ? get_money$ : get_money$T} С`}
+                placeholder={`${tmoney_$ > 0 ? get_money$ : get_money$T} С`}
                 keyboardType="numeric"
                 style={styles.myInput}
               />

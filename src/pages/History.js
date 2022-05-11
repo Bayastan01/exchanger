@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react'
-import {View, FlatList, StyleSheet, Text, ScrollView} from 'react-native'
+import {View, FlatList, StyleSheet, Text, ScrollView, RefreshControl} from 'react-native'
 import {Avatar, Caption, Paragraph} from 'react-native-paper'
 import moment from 'moment'
 import axios from 'axios'
@@ -10,7 +10,25 @@ moment.locale('ru')
 function History() {
   const {token, setUser, user} = useContext(GlobalContext)
   const [history_, setHistory_] = useState([])
+  const [refreshing, setRefreshing] = useState(false);
 
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    axios.get('http://192.168.0.102:5002/api/v1/auth/me', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
+      .then((data) => {
+        setUser(data.data.payload.user)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+      .finally(() => {
+        setRefreshing(false)
+      })
+  }, []);
 
   useEffect(() => {
     history()
@@ -32,7 +50,15 @@ function History() {
   }
   console.log(history_)
   return (
-    <ScrollView style={{backgroundColor: '#272B34', height: '100%'}}>
+    <ScrollView
+      style={{backgroundColor: '#272B34', height: '100%'}}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+        />
+      }
+    >
       <Caption style={{...styles.title, marginVertical: 20, marginHorizontal: 20, textAlign: 'center'}}>
         {moment().format('LL')}
       </Caption>

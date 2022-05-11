@@ -16,7 +16,6 @@ const Profile = () => {
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
     const [name_key, setName_key] = useState(true);
-    const [name, setName] = useState('');
     const [number_key, setNumber_key] = useState(true);
     const [number, setNumber] = useState('');
     const [email_key, setEmail_key] = useState(true);

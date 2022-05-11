@@ -18,7 +18,7 @@ const App = () => {
 
     const [user, setUser] = useState(null)
     const [token, setToken] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         fetchUser()

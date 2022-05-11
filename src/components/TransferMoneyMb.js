@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
 import {Button, Caption, TextInput} from 'react-native-paper'
 import {StyleSheet, Text, View} from 'react-native'
 import {VERIFICATION_CODE_LENGTH} from '../settings/settings'
@@ -10,7 +10,7 @@ function TransferMoneyMb() {
   const [mbNumber, setMbNumber] = useState(0)
   const [mbSum, setMbsum] = useState(0)
   const [verification_code, setVerificationCode] = useState('');
-  const [сommission, setCommission] = useState('0.5%')
+  const [commission, setCommission] = useState('')
 
   const Send_money = () => {
     axios.post('http://192.168.0.102:5002/api/v1/transfer', {
@@ -33,6 +33,26 @@ function TransferMoneyMb() {
     setMbsum(0)
     setVerificationCode('')
   }
+
+  useEffect(() => {
+    well()
+  }, [user])
+
+  const well = () => {
+    axios.get('http://192.168.0.102:5002/api/v1/exchange', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
+      .then((data) => {
+        setCommission(data.data.payload.commission)
+        console.log(data)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  }
+
   const con_text = mbNumber.length === 10 && mbSum.length  > 3 && mbSum.length < 7 && verification_code.length === VERIFICATION_CODE_LENGTH
 
   return (
@@ -59,7 +79,7 @@ function TransferMoneyMb() {
           value={mbSum}
           onChangeText={sum => setMbsum(sum)}
         />
-        <Text style={{color: '#cbc9c9', marginHorizontal: 15}}>Комиссия Tether: {сommission}</Text>
+        <Text style={{color: '#cbc9c9', marginHorizontal: 15}}>Комиссия Tether: {commission} %</Text>
         <TextInput
           label="Код"
           value={verification_code}
