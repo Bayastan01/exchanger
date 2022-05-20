@@ -13,7 +13,7 @@ function TransferMoneyMb() {
   const [commission, setCommission] = useState('')
 
   const Send_money = () => {
-    axios.post('http://192.168.0.102:5002/api/v1/transfer', {
+    axios.post('http://192.168.0.101:5002/api/v1/transfer', {
       to: 'mbank',
       sum: mbSum,
       requisite: mbNumber
@@ -39,7 +39,7 @@ function TransferMoneyMb() {
   }, [user])
 
   const well = () => {
-    axios.get('http://192.168.0.102:5002/api/v1/exchange', {
+    axios.get('http://192.168.0.101:5002/api/v1/exchange', {
       headers: {
         'Authorization': `Bearer ${token}`,
       }

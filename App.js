@@ -18,7 +18,7 @@ const App = () => {
 
     const [user, setUser] = useState(null)
     const [token, setToken] = useState(null)
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         fetchUser()
@@ -36,6 +36,7 @@ const App = () => {
                     'Authorization': `Bearer ${data.token}`,
                 }
             }).then(r => {
+                setLoading(false)
                 setUser(r.data.payload.user)
             }).finally(() => {
                 setLoading(false)
@@ -60,7 +61,7 @@ const App = () => {
     return (
         <GlobalContext.Provider value={{
             user, setUser, token, setToken, signIn,
-            signOut,
+            signOut
         }}>
             {loading ? (
                 <View style={{
@@ -77,9 +78,9 @@ const App = () => {
                 <>
                     {user ? (
                         <NavigationContainer>
-                            <Stack.Navigator>
+                            <Stack.Navigator initialRouteName="homeScreen">
                                 <Stack.Screen
-                                    name="HomeScreen"
+                                    name="homeScreen"
                                     component={HomeScreen}
                                     options={{headerShown: false, title: 'Home'}}
                                 />
