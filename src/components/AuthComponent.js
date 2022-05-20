@@ -16,7 +16,7 @@ const AuthComponent = (props) => {
 
     const SignUser = (data) => {
         setLoading(true)
-        axios.post('http://192.168.0.102:5002/api/v1/auth/sign-in', {
+        axios.post('http://192.168.0.101:5002/api/v1/auth/sign-in', {
             [data.type]: data.user,
             [data.type === 'email' ? 'phone_number' : 'email']: null,
             password: data.user_password
@@ -24,7 +24,6 @@ const AuthComponent = (props) => {
             console.log(response.data.payload.user.email)
             globalContext.signIn(response.data.payload)
             setLoading(false)
-            navigate('HomeScreen')
         }).catch(e => {
             if (e?.response?.data?.status === 'user_not_found') {
                 Alert.alert('Ошибка!', 'Пользователь не найден!')

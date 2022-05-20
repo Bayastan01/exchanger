@@ -14,7 +14,7 @@ function History() {
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    axios.get('http://192.168.0.102:5002/api/v1/auth/me', {
+    axios.get('http://192.168.0.101:5002/api/v1/auth/me', {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
@@ -35,7 +35,7 @@ function History() {
   }, [user])
 
   const history = () => {
-    axios.get('http://192.168.0.102:5002/api/v1/exchange/history', {
+    axios.get('http://192.168.0.101:5002/api/v1/exchange/history', {
       headers: {
         'Authorization': `Bearer ${token}`,
       }

@@ -25,7 +25,7 @@ const Profile = () => {
     const {user, signOut, token} = useContext(GlobalContext)
 
     const add = () => {
-      axios.post('http://192.168.0.102:5002/api/v1/auth/password', {
+      axios.post('http://192.168.0.101:5002/api/v1/auth/password', {
           current_password: password,
           new_password: password2
       }, {

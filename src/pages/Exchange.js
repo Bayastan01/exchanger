@@ -20,7 +20,7 @@ function Exchange() {
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    axios.get('http://192.168.0.102:5002/api/v1/auth/me', {
+    axios.get('http://192.168.0.101:5002/api/v1/auth/me', {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
@@ -37,7 +37,7 @@ function Exchange() {
   }, []);
 
   const change_money = () => {
-    axios.post('http://192.168.0.102:5002/api/v1/exchange', {
+    axios.post('http://192.168.0.101:5002/api/v1/exchange', {
       currency: money_$ > 0 ? 'usd' : 'usdt',
       amount: money_$ > 0 ? money_$ : money_$T
     }, {
@@ -47,7 +47,7 @@ function Exchange() {
     },).then((response) => {
       console.log(response)
       setUser(response.data.payload.user)
-      alert('Ваш баланс менял')
+      alert('Ваш баланс обменён')
       setTmoney_$(0)
       setTmoney_$T(0)
     }).catch((e) => {
@@ -60,7 +60,7 @@ function Exchange() {
   }, [user])
 
   const well = () => {
-   axios.get('http://192.168.0.102:5002/api/v1/exchange', {
+   axios.get('http://192.168.0.101:5002/api/v1/exchange', {
      headers: {
        'Authorization': `Bearer ${token}`,
      }

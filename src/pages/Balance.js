@@ -23,7 +23,7 @@ function Balance() {
 
     const onRefresh = React.useCallback(() => {
         setRefreshing(true);
-        axios.get('http://192.168.0.102:5002/api/v1/auth/me', {
+        axios.get('http://192.168.0.101:5002/api/v1/auth/me', {
             headers: {
                 'Authorization': `Bearer ${token}`,
             }
@@ -44,7 +44,7 @@ function Balance() {
     }, [user])
 
     const well = () => {
-        axios.get('http://192.168.0.102:5002/api/v1/exchange', {
+        axios.get('http://192.168.0.101:5002/api/v1/exchange', {
             headers: {
                 'Authorization': `Bearer ${token}`,
             }
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     itemText: {
         maxWidth: '80%',
         color: '#EDF2F6',
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: '500',
     },
     itemSmall: {
