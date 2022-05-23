@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {Button, Caption, TextInput} from 'react-native-paper'
 import {StyleSheet, Text, View} from 'react-native'
-import {VERIFICATION_CODE_LENGTH} from '../settings/settings'
+import {API_URL, VERIFICATION_CODE_LENGTH} from '../settings/settings'
 import {GlobalContext} from '../../App'
 import axios from 'axios'
 
@@ -13,7 +13,7 @@ function TransferMoneyMb() {
   const [commission, setCommission] = useState('')
 
   const Send_money = () => {
-    axios.post('http://192.168.0.101:5002/api/v1/transfer', {
+    axios.post(API_URL + '/api/v1/transfer', {
       to: 'mbank',
       sum: mbSum,
       requisite: mbNumber
@@ -39,7 +39,7 @@ function TransferMoneyMb() {
   }, [user])
 
   const well = () => {
-    axios.get('http://192.168.0.101:5002/api/v1/exchange', {
+    axios.get(API_URL + '/api/v1/exchange', {
       headers: {
         'Authorization': `Bearer ${token}`,
       }

@@ -4,6 +4,7 @@ import AuthProps from './AuthProps'
 import {useNavigation} from "@react-navigation/native";
 import axios from "axios";
 import {GlobalContext} from "../../App";
+import {API_URL} from '../settings/settings'
 
 const AuthComponent = (props) => {
     const [type_Input, setType_Input] = useState('Электронная почта')
@@ -16,7 +17,7 @@ const AuthComponent = (props) => {
 
     const SignUser = (data) => {
         setLoading(true)
-        axios.post('http://192.168.0.101:5002/api/v1/auth/sign-in', {
+        axios.post(API_URL + '/api/v1/auth/sign-in', {
             [data.type]: data.user,
             [data.type === 'email' ? 'phone_number' : 'email']: null,
             password: data.user_password

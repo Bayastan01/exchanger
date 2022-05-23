@@ -5,6 +5,7 @@ import moment from 'moment'
 import axios from 'axios'
 import {GlobalContext} from '../../App'
 import 'moment/locale/ru'
+import {API_URL} from '../settings/settings'
 moment.locale('ru')
 
 function History() {
@@ -14,7 +15,7 @@ function History() {
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    axios.get('http://192.168.0.101:5002/api/v1/auth/me', {
+    axios.get(API_URL + '/api/v1/auth/me', {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
@@ -35,7 +36,7 @@ function History() {
   }, [user])
 
   const history = () => {
-    axios.get('http://192.168.0.101:5002/api/v1/exchange/history', {
+    axios.get(API_URL + '/api/v1/exchange/history', {
       headers: {
         'Authorization': `Bearer ${token}`,
       }

@@ -10,6 +10,7 @@ import Notifications from "./src/pages/Notifications"
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import {ActivityIndicator} from "react-native-paper";
 import axios from "axios";
+import {API_URL} from './src/settings/settings'
 
 export const GlobalContext = createContext({})
 
@@ -31,7 +32,7 @@ const App = () => {
                 return
             }
             const data = JSON.parse(res)
-            axios.get('http://192.168.43.182:5002/api/v1/auth/me', {
+            axios.get(API_URL + '/api/v1/auth/me', {
                 headers: {
                     'Authorization': `Bearer ${data.token}`,
                 }

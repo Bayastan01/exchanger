@@ -7,6 +7,7 @@ import Fontisto from "react-native-vector-icons/Fontisto";
 import Entypo from "react-native-vector-icons/Entypo";
 import {GlobalContext} from "../../App";
 import axios from 'axios'
+import {API_URL} from '../settings/settings'
 
 const screenSize = Dimensions.get('window');
 
@@ -25,7 +26,7 @@ const Profile = () => {
     const {user, signOut, token} = useContext(GlobalContext)
 
     const add = () => {
-      axios.post('http://192.168.0.101:5002/api/v1/auth/password', {
+      axios.post(API_URL + '/api/v1/auth/password', {
           current_password: password,
           new_password: password2
       }, {

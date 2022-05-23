@@ -3,6 +3,7 @@ import {KeyboardAvoidingView, RefreshControl, ScrollView, StyleSheet, Text, View
 import {Paragraph, TextInput, Avatar, Button} from 'react-native-paper'
 import {GlobalContext} from '../../App'
 import axios from 'axios'
+import {API_URL} from '../settings/settings'
 
 function Exchange() {
   const {user} = useContext(GlobalContext)
@@ -20,7 +21,7 @@ function Exchange() {
 
   const onRefresh = React.useCallback(() => {
     setRefreshing(true);
-    axios.get('http://192.168.0.101:5002/api/v1/auth/me', {
+    axios.get(API_URL + '/api/v1/auth/me', {
       headers: {
         'Authorization': `Bearer ${token}`,
       }
@@ -37,7 +38,7 @@ function Exchange() {
   }, []);
 
   const change_money = () => {
-    axios.post('http://192.168.0.101:5002/api/v1/exchange', {
+    axios.post(API_URL + '/api/v1/exchange', {
       currency: money_$ > 0 ? 'usd' : 'usdt',
       amount: money_$ > 0 ? money_$ : money_$T
     }, {
@@ -60,7 +61,7 @@ function Exchange() {
   }, [user])
 
   const well = () => {
-   axios.get('http://192.168.0.101:5002/api/v1/exchange', {
+   axios.get(API_URL + '/api/v1/exchange', {
      headers: {
        'Authorization': `Bearer ${token}`,
      }
