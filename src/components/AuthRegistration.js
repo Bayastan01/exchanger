@@ -3,6 +3,7 @@ import AuthProps from './AuthProps'
 import {Alert, StyleSheet, ActivityIndicator} from 'react-native'
 import axios from "axios";
 import {GlobalContext} from "../../App";
+import {API_URL} from '../settings/settings'
 
 function AuthRegistration() {
     const [type_Input, setType_Input] = useState('Электронная почта')
@@ -16,7 +17,7 @@ function AuthRegistration() {
 
     const AddUser = (data) => {
         setLoading(true)
-        axios.post('http://192.168.0.101:5002/api/v1/auth/sign-up', {
+        axios.post(API_URL + '/api/v1/auth/sign-up', {
             [data.type]: data.user,
             [data.type === 'email' ? 'phone_number' : 'email']: null,
             password: data.user_password
