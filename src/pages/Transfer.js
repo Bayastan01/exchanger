@@ -4,7 +4,6 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import TransferMoneyEl from '../components/TransferMoneyEl'
 import TransferMoneyMb from '../components/TransferMoneyMb'
-import {GlobalContext} from '../../App'
 
 
 function Transfer() {
@@ -22,7 +21,7 @@ function Transfer() {
         component={TransferMoneyEl}
         options={{
           headerShown: false,
-          tabBarLabel: 'Пополнение Элкарт',
+          tabBarLabel: 'Вывести Элкарт',
           tabBarIcon: (props) => (
             <Ionicons {...props} name='cash-outline'  size={22}/>
           )
@@ -33,7 +32,7 @@ function Transfer() {
         component={TransferMoneyMb}
         options={{
           headerShown: false,
-          tabBarLabel: 'Пополнение МБ банк',
+          tabBarLabel: 'Вывести МБ банк',
           tabBarIcon: (props) => (
             <Ionicons {...props} name='cash-outline'  size={22}/>
           )
