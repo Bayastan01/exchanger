@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react'
 import {Button, TextInput} from 'react-native-paper'
-import {StyleSheet, Text, View} from 'react-native'
+import {RefreshControl, ScrollView, StyleSheet, Text, View} from 'react-native'
 import {API_URL, VERIFICATION_CODE_LENGTH} from '../settings/settings'
 import {GlobalContext} from '../../App'
 import axios from 'axios'
@@ -15,7 +15,27 @@ function TopUp() {
   const [sum, setSum] = useState(0)
   const [image, setImage] = useState([])
   const [well$T, setWell$T] = useState(0)
+  const [refreshing, setRefreshing] = useState(false);
   const [commission, setCommission] = useState(1.5)
+
+  const onRefresh = React.useCallback(() => {
+    setRefreshing(true);
+    axios.get(API_URL + '/api/v1/exchange', {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      }
+    })
+      .then((data) => {
+        setWell$T(data.data.payload.rate_usdt)
+        console.log(data)
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+      .finally(() => {
+        setRefreshing(false)
+      })
+  }, []);
 
   const Send_money = () => {
     axios.post(API_URL + '/api/v1/transfer', {
@@ -71,7 +91,15 @@ function TopUp() {
   const get_money = sum * well$T + get_com_money
 
   return (
-    <View style={{backgroundColor: '#272B34', height: '100%'}}>
+    <ScrollView
+      style={{backgroundColor: '#272B34', height: '100%'}}
+      refreshControl={
+        <RefreshControl
+          refreshing={refreshing}
+          onRefresh={onRefresh}
+        />
+      }
+    >
       <View style={styles.bigCorobca}>
         <Text style={{color: '#fff', textAlign: 'center'}}>Наш карты</Text>
         <Text style={{color: '#fff', fontSize: 20, fontWeight: '500'}}>Элкарт 9417447788453424</Text>
@@ -108,7 +136,7 @@ function TopUp() {
             outlineColor="#3f51b5"
             disabled={true}
             dense={true}
-            value={'Скрин счет пополнениям вставте фото'}
+            value={'cкрин счет пополнениям фото'}
           />
           {email_key ? (
             <Ionicons
@@ -135,7 +163,7 @@ function TopUp() {
           Отправить заявку
         </Button>
       </View>
-    </View>
+    </ScrollView>
   )
 }
 

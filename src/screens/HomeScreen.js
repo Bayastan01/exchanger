@@ -15,7 +15,7 @@ function HomeScreen() {
             initialRouteName="balance"
             screenOptions={{
                 tabBarActiveTintColor: '#02ABE1',
-                tabBarLabelStyle: {fontSize: 12},
+                tabBarLabelStyle: {fontSize: 10},
                 tabBarStyle: {backgroundColor: '#272B34'},
             }}>
             <Tab.Screen
