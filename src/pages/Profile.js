@@ -1,9 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {StyleSheet, View, Dimensions, Text, ScrollView, SafeAreaView, Alert} from "react-native";
+import {StyleSheet, View, Dimensions, ScrollView, SafeAreaView} from "react-native";
 import {Avatar, Button, TextInput} from 'react-native-paper';
 import Ionicons from "react-native-vector-icons/Ionicons";
-import FontAwesome from "react-native-vector-icons/FontAwesome";
-import Fontisto from "react-native-vector-icons/Fontisto";
 import Entypo from "react-native-vector-icons/Entypo";
 import {GlobalContext} from "../../App";
 import axios from 'axios'
@@ -27,6 +25,8 @@ const Profile = () => {
 
     const add = () => {
       axios.post(API_URL + '/api/v1/auth/password', {
+          email: email,
+          phone_number: number,
           current_password: password,
           new_password: password2
       }, {
@@ -68,39 +68,9 @@ const Profile = () => {
                                 mode='outlined'
                                 activeOutlineColor='green'
                                 outlineColor="#3f51b5"
-                                disabled={number_key}
-                                dense={true}
-                                placeholder="Номер"
-                                value={number}
-                                onChangeText={l => setNumber(l)}
-                            />
-                            {number_key ? (
-                                <Ionicons
-                                    style={styles.pencil}
-                                    name='pencil'
-                                    color={'#3f51b5'}
-                                    size={27}
-                                    onPress={() => setNumber_key(false)}/>
-                            ) : (
-                                <Entypo
-                                    style={styles.pencil}
-                                    name='check'
-                                    color={'green'}
-                                    size={27}
-                                    onPress={() => setNumber_key(true)}/>
-                            )}
-                        </View>
-                        <View style={styles.textinput}>
-
-                            <TextInput
-                                style={styles.input}
-                                mode='outlined'
-                                activeOutlineColor='green'
-                                outlineColor="#3f51b5"
                                 disabled={email_key}
                                 dense={true}
-                                placeholder="Электронная почта"
-                                value={email}
+                                value={email || number}
                                 onChangeText={l => setEmail(l)}
                             />
                             {email_key ? (
@@ -120,7 +90,6 @@ const Profile = () => {
                             )}
                         </View>
                         <View style={styles.textinput}>
-
                             <TextInput
                                 style={styles.input}
                                 secureTextEntry={pass}

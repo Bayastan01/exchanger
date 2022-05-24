@@ -6,6 +6,7 @@ import Exchange from "../pages/Exchange";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Transfer from '../pages/Transfer'
 import History from '../pages/History'
+import TopUp from '../pages/TopUp'
 
 function HomeScreen() {
     const Tab = createBottomTabNavigator()
@@ -34,6 +35,17 @@ function HomeScreen() {
               options={{
                 headerShown: false,
                 tabBarLabel: 'Перевести',
+                tabBarIcon: (props) => (
+                  <Ionicons {...props}  name='swap-horizontal-outline' size={22}/>
+                )
+              }}
+            />
+          <Tab.Screen
+              name="top_up"
+              component={TopUp}
+              options={{
+                headerShown: false,
+                tabBarLabel: 'Купить USDT',
                 tabBarIcon: (props) => (
                   <Ionicons {...props}  name='swap-horizontal-outline' size={22}/>
                 )
